@@ -1,16 +1,16 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { massdkCreate } from './redux/actions';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { massdkCreate } from "./redux/actions";
 
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 
-import axios from 'axios';
+import axios from "axios";
 
-import MarketMain from './components/MarketMain';
+import MarketMain from "./components/MarketMain";
 
-import { PlanCoord } from './interfacePlans.d';
+import { PlanCoord } from "./interfacePlans.d";
 
-import { dataMap } from './otladkaMaps';
+//import { dataMap } from "./otladkaMaps";
 
 export let dateMapGl: any;
 export let dateRouteGl: any;
@@ -105,20 +105,18 @@ const App = () => {
   const [trigger, setTrigger] = React.useState(false);
 
   if (!flagOpen) {
-    console.log('РЕЖИМ ОТЛАДКИ!!!', dataMap.tflight);
-
     let DateCarts: any = null;
-    axios.get('https://dummyjson.com/carts').then(({ data }) => {
+    axios.get("https://dummyjson.com/carts").then(({ data }) => {
       DateCarts = data;
-      console.log('!!!DateCarts:', DateCarts);
+      console.log("!!!DateCarts:", DateCarts);
       for (let i = 0; i < DateCarts.carts.length; i++) {
         let mass = DateCarts.carts[i];
         for (let j = 0; j < mass.products.length; j++) {
           let mask: any = {
             id: 0,
-            title: '',
+            title: "",
             price: 0,
-            thumbnail: '',
+            thumbnail: "",
           };
           mask.id = mass.products[j].id;
           mask.title = mass.products[j].title;
@@ -127,7 +125,7 @@ const App = () => {
           massDk.push(mask);
         }
       }
-      console.log('!!!massDk:', massDk);
+      console.log("!!!massDk:", massDk);
       dispatch(massdkCreate(massdk));
       flagOpen = true;
       setTrigger(!trigger);
@@ -135,7 +133,7 @@ const App = () => {
   }
 
   return (
-    <Grid container sx={{ height: '100vh', width: '100%', bgcolor: '#E9F5D8' }}>
+    <Grid container sx={{ height: "100vh", width: "100%", bgcolor: "#E9F5D8" }}>
       <Grid item xs>
         {flagOpen && <MarketMain />}
       </Grid>
