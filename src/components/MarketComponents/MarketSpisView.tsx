@@ -1,37 +1,37 @@
-import * as React from "react";
-import { useSelector } from "react-redux";
+import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { massrouteCreate } from './../../redux/actions';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
 
 //import { ReplaceInSvg } from "../../MapServiceFunctions";
 
-import { styleModalEnd } from "./../MarketStyle";
-//import { styleWVI00, styleWVI01 } from "../../MainMapStyle";
-
-//import { KolIn } from "./../../MapConst";
-
-//let nameIn = "";
+import { styleModalEnd, styleWVI00, styleWVI01 } from './../MarketStyle';
+import { styleWVI02, styleWVI03 } from './../MarketStyle';
 
 const MarketSpisView = (props: {
   close: Function; // функция возврата в родительский компонент
   idx: number;
-  // name: string;
-  // nik: string;
-  // pict: any; // фото
+  trigger: Function; // функция для ререндера в родительском компоненте
 }) => {
-  //console.log("MapWindPK:", props.route);
   //== Piece of Redux =======================================
   let massdk = useSelector((state: any) => {
     const { massdkReducer } = state;
     return massdkReducer.massdk;
   });
+  let massroute = useSelector((state: any) => {
+    const { massrouteReducer } = state;
+    return massrouteReducer.massroute;
+  });
+  console.log('massroute:', massroute);
+  const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(true);
 
   //=== инициализация ======================================
-  //if (props.name) nameIn = props.name + ".";
 
   //========================================================
   const CloseEnd = React.useCallback(() => {
@@ -43,12 +43,12 @@ const MarketSpisView = (props: {
     (event) => {
       if (event.keyCode === 27) CloseEnd();
     },
-    [CloseEnd]
+    [CloseEnd],
   );
 
   React.useEffect(() => {
-    document.addEventListener("keydown", escFunction);
-    return () => document.removeEventListener("keydown", escFunction);
+    document.addEventListener('keydown', escFunction);
+    return () => document.removeEventListener('keydown', escFunction);
   }, [escFunction]);
   //=== Функции - обработчики ==============================
 
@@ -60,38 +60,16 @@ const MarketSpisView = (props: {
   };
 
   const CloseEndGl = (event: any, reason: string) => {
-    if (reason === "escapeKeyDown") handleClose();
+    if (reason === 'escapeKeyDown') handleClose();
   };
 
-  //let lngth = Math.round(window.innerHeight * 0.8).toString();
-  //let expSvg = ReplaceInSvg(props.svg, lngth);
-
-  const styleWVI00 = {
-    outline: "none",
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%, -50%)",
-    width: window.innerHeight * 1.1 + 5,
-    bgcolor: "background.paper",
-    border: "1px solid #FFFFFF",
-    borderRadius: 1,
-    color: "#7620a2", // сиреневый
-    boxShadow: 24,
-    textAlign: "center",
-    padding: "5px 5px 5px 5px",
-    height: window.innerHeight * 0.9 + 4,
+  const ClickBasket = () => {
+    let rec = massdk[props.idx];
+    massroute.push(rec);
+    dispatch(massrouteCreate(massroute));
+    props.trigger();
+    props.close(false);
   };
-
-  // const styleWVI01 = {
-  //   border: "1px solid #d4d4d4",
-  //   marginTop: 1,
-  //   bgcolor: "#F1F5FB",
-  //   height: window.innerHeight * 0.8 + 4,
-  //   borderRadius: 1,
-  //   overflowX: "auto",
-  //   boxShadow: 6,
-  // };
 
   return (
     <Modal open={openImg} onClose={CloseEndGl} hideBackdrop={false}>
@@ -99,12 +77,36 @@ const MarketSpisView = (props: {
         <Button sx={styleModalEnd} onClick={() => handleClose()}>
           <b>&#10006;</b>
         </Button>
-        {/* <b>{props.name}</b> {nik1}
-        <b>{props.nik}</b>
-        {nik2}
-        <Box sx={styleWVI01}>
-          <img src={props.pict} height={window.innerHeight * 0.8} alt="PICT" />
-        </Box> */}
+        <Grid container>
+          <Grid item xs={8} sx={{ border: 0 }}>
+            <Box sx={styleWVI01}>
+              <img
+                src={massdk[props.idx].thumbnail}
+                height={window.innerHeight * 0.8}
+                width={'95%'}
+                alt="PICT"
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={4} sx={{ border: 0 }}>
+            <Box sx={styleWVI03}>
+              <b>
+                <em>Описание:</em>
+              </b>
+            </Box>
+            <Button sx={styleWVI02} onClick={() => ClickBasket()}>
+              Добавить в корзину
+            </Button>
+          </Grid>
+        </Grid>
+        <Box sx={{ textAlign: 'left', padding: '5px 0px 0px 10px' }}>
+          <Box>
+            #<b>{massdk[props.idx].id}</b> Цена: <b>{massdk[props.idx].price}</b>
+          </Box>
+          <Box>
+            <b>{massdk[props.idx].title}</b>
+          </Box>
+        </Box>
       </Box>
     </Modal>
   );

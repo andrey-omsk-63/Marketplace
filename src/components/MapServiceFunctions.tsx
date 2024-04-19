@@ -158,7 +158,7 @@ export const RecordMassRoute = (
   massBind: Array<number>,
   reqRoute: any,
 ) => {
-  let masskRoute: Router = {
+  let masskRoute: any = {
     region: 0,
     sourceArea: 0,
     sourceID: 0,
