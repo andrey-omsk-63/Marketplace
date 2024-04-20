@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  //useDispatch,
+  useSelector,
+} from 'react-redux';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -7,43 +10,8 @@ import Box from '@mui/material/Box';
 
 import MarketSpisView from './MarketSpisView';
 
-import { styleBl1Form01 } from './../MarketStyle';
-
-const styleBl1Form02 = (part: number) => {
-  const styleBl3Form = {
-    //bgcolor: "background.paper",
-    //border: '1px solid #d4d4d4', // серый
-    borderRadius: 1,
-    height: window.innerHeight - part,
-    overflowX: 'auto', // скролл
-  };
-  return styleBl3Form;
-};
-
-const styleBl1Form03 = (hght: number) => {
-  const styleBl1Form = {
-    //border: 1,
-    //bgcolor: "#F1F5FB",
-    height: hght,
-    //padding: "15px 15px 15px 15px",
-    //margin: "0px 5px 0px 5px",
-  };
-  return styleBl1Form;
-};
-
-const styleBl1Form04 = (hght: number) => {
-  const styleBl104 = {
-    fontSize: 11.8,
-    margin: '0px 5px 5px 5px',
-    bgcolor: '#F1F5FB',
-    border: '1px solid #d4d4d4', // серый
-    borderRadius: 2,
-    height: hght - 15,
-    padding: '5px 05px 0px 10px',
-    cursor: 'pointer',
-  };
-  return styleBl104;
-};
+import { styleBl1Form01, styleBl1Form02, styleBl1Form03 } from './../MarketStyle';
+import { styleBl1Form04 } from './../MarketStyle';
 
 const shift = 95;
 let IDX = -1;
@@ -63,7 +31,7 @@ const MarketSpis = (props: {
     return massdkReducer.massdk;
   });
   //console.log('MASSDK:', massdk);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
 
@@ -80,21 +48,24 @@ const MarketSpis = (props: {
 
   const PunktSpis = () => {
     cH++;
-
     return (
-      <Box sx={styleBl1Form04(ht)}>
-        <Box sx={{ height: ht - 45 }}>
-          <img src={massdk[cH - 1].thumbnail} height={ht - 55} width={'58%'} alt="Pict" />
-        </Box>
-        <Box sx={{ marginTop: -0.75 }}>
-          <Box>
-            #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>
+      <>
+        {cH <= massdk.length && (
+          <Box sx={styleBl1Form04(ht)}>
+            <Box sx={{ height: ht - 45 }}>
+              <img src={massdk[cH - 1].thumbnail} height={ht - 55} width={'58%'} alt="Pict" />
+            </Box>
+            <Box sx={{ marginTop: -0.75 }}>
+              <Box>
+                #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>
+              </Box>
+              <Box>
+                <b>{massdk[cH - 1].title}</b>
+              </Box>
+            </Box>
           </Box>
-          <Box>
-            <b>{massdk[cH - 1].title}</b>
-          </Box>
-        </Box>
-      </Box>
+        )}
+      </>
     );
   };
 
@@ -105,7 +76,7 @@ const MarketSpis = (props: {
     for (let i = 0; i < kolStr; i++) {
       resStr.push(
         <Grid key={i} container>
-          <Grid item xs={12} sx={{ border: 0, height: ht }}>
+          <Grid item xs={12} sx={{ height: ht }}>
             <Grid key={i * i} container>
               <Grid item xs={2.4} sx={stl103(ht)} onClick={() => ClPnt(i, 0)}>
                 {PunktSpis()}
@@ -133,7 +104,7 @@ const MarketSpis = (props: {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box sx={{ color: '#A73AFD', fontSize: 18, marginLeft: 2, height: '27px' }}>
+        <Box sx={{ color: '#7620A2', fontSize: 18, marginLeft: 2, height: '27px' }}>
           <b>Каталог</b>
         </Box>
         <Box sx={styleBl1Form02(shift)}>{StrokaSpis()}</Box>

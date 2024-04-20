@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  //useDispatch,
+  useSelector,
+} from 'react-redux';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -18,16 +21,16 @@ const MarketOrder = () => {
     return massrouteReducer.massroute;
   });
   //console.log('MASSDK:', massdk);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box sx={{ color: '#A73AFD', fontSize: 18, marginLeft: 2, height: '27px' }}>
+        <Box sx={{ color: '#7620A2', fontSize: 18, marginLeft: 2, height: '27px' }}>
           <b>Покупки</b>
         </Box>
       </Grid>
       {massroutePro.length === 0 ? (
-        <Box sx={{ width: '100%', color: '#A73AFD', textAlign: 'center' }}>
+        <Box sx={{ width: '100%', color: '#7620A2', textAlign: 'center' }}>
           <h1>Покупок пока нет</h1>
         </Box>
       ) : (

@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  //useDispatch,
+  useSelector,
+} from 'react-redux';
 //import { statsaveCreate } from "../redux/actions";
 //import imageCompression from 'browser-image-compression';
 
@@ -132,7 +135,7 @@ const MarketMain = (props: {}) => {
         </Grid>
       </Grid>
       {dispBlock1 && <MarketSpis trigger={SetTrigger} />}
-      {dispBlock2 && <MarketBasket />}
+      {dispBlock2 && <MarketBasket trigger={SetTrigger} />}
       {dispBlock3 && <MarketOrder />}
     </Grid>
   );

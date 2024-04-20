@@ -82,8 +82,6 @@ export let massRoutePro: Router[] = [];
 export let Coordinates: Array<Array<number>> = []; // массив координат
 
 let flagOpen = false;
-//let flagOpenWS = true;
-//let WS: any = null;
 
 const App = () => {
   //== Piece of Redux ======================================
@@ -111,11 +109,17 @@ const App = () => {
             price: 0,
             thumbnail: '',
           };
-          mask.id = mass.products[j].id;
-          mask.title = mass.products[j].title;
-          mask.price = mass.products[j].price;
-          mask.thumbnail = mass.products[j].thumbnail;
-          massDk.push(mask);
+          let have = 0;
+          for (let ii = 0; ii < massDk.length; ii++) {
+            if (massDk[ii].id === mass.products[j].id) have++; // дубликат
+          }
+          if (!have) {
+            mask.id = mass.products[j].id;
+            mask.title = mass.products[j].title;
+            mask.price = mass.products[j].price;
+            mask.thumbnail = mass.products[j].thumbnail;
+            massDk.push(mask);
+          }
         }
       }
       console.log('!!!massDk:', massDk);
@@ -126,7 +130,7 @@ const App = () => {
   }
 
   return (
-    <Grid container sx={{ height: '100vh', width: '100%', bgcolor: '#E9F5D8' }}>
+    <Grid container sx={{ height: '100vh', width: '100%', bgcolor: '#E3D8F7' }}>
       <Grid item xs>
         {flagOpen && <MarketMain />}
       </Grid>

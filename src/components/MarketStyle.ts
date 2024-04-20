@@ -51,6 +51,42 @@ export const styleBl1Form01 = (part: number) => {
   };
   return styleBl3Form;
 };
+
+export const styleBl1Form02 = (part: number) => {
+  const styleBl3Form = {
+    //bgcolor: "background.paper",
+    //border: '1px solid #d4d4d4', // серый
+    borderRadius: 1,
+    height: window.innerHeight - part,
+    overflowX: 'auto', // скролл
+  };
+  return styleBl3Form;
+};
+
+export const styleBl1Form03 = (hght: number) => {
+  const styleBl1Form = {
+    //border: 1,
+    //bgcolor: "#F1F5FB",
+    height: hght,
+    //padding: "15px 15px 15px 15px",
+    //margin: "0px 5px 0px 5px",
+  };
+  return styleBl1Form;
+};
+
+export const styleBl1Form04 = (hght: number) => {
+  const styleBl104 = {
+    fontSize: 11.8,
+    margin: '0px 5px 5px 5px',
+    bgcolor: '#F1F5FB',
+    border: '1px solid #d4d4d4', // серый
+    borderRadius: 2,
+    height: hght - 15,
+    padding: '5px 05px 0px 10px',
+    cursor: 'pointer',
+  };
+  return styleBl104;
+};
 //=== MarketSpisView ==================================================
 export const styleWVI00 = {
   fontSize: 19.0,
@@ -89,7 +125,7 @@ export const styleWVI02 = {
   bgcolor: '#A73AFD', // сиреневый
   border: '1px solid #d4d4d4', // серый
   borderRadius: 1,
-  color: 'white',
+  color: '#d4d4d4', // серый
   textTransform: 'unset !important',
   boxShadow: 5,
 };
@@ -101,7 +137,7 @@ export const styleWVI022 = {
   bgcolor: '#E8CCFF', // бледно-сиреневый
   border: '1px solid #d4d4d4', // серый
   borderRadius: 1,
-  color: '#A73AFD', // сиреневый
+  color: '#7620A2', // сиреневый
   textTransform: 'unset !important',
   boxShadow: 5,
 };
@@ -110,6 +146,14 @@ export const styleWVI03 = {
   textAlign: 'center',
   marginTop: 1,
   height: window.innerHeight * 0.705,
+  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
 };
-
+//=== MarketBasket ====================================================
+export const styleFormEnd = {
+  height: '21px',
+  maxWidth: '2%',
+  minWidth: '2%',
+  color: '#801F95', // сиреневый
+  textShadow: '2px 2px 3px rgba(0,0,0,0.3)',
+};
 //=== InputAdress =====================================================
