@@ -12,7 +12,7 @@ import { styleBl1Form01 } from './../MarketStyle';
 const styleBl1Form02 = (part: number) => {
   const styleBl3Form = {
     //bgcolor: "background.paper",
-    border: '1px solid #d4d4d4', // серый
+    //border: '1px solid #d4d4d4', // серый
     borderRadius: 1,
     height: window.innerHeight - part,
     overflowX: 'auto', // скролл
@@ -36,6 +36,8 @@ const styleBl1Form04 = (hght: number) => {
     fontSize: 11.8,
     margin: '0px 5px 5px 5px',
     bgcolor: '#F1F5FB',
+    border: '1px solid #d4d4d4', // серый
+    borderRadius: 2,
     height: hght - 15,
     padding: '5px 05px 0px 10px',
     cursor: 'pointer',
@@ -84,11 +86,13 @@ const MarketSpis = (props: {
         <Box sx={{ height: ht - 45 }}>
           <img src={massdk[cH - 1].thumbnail} height={ht - 55} width={'58%'} alt="Pict" />
         </Box>
-        <Box>
-          #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>
-        </Box>
-        <Box>
-          <b>{massdk[cH - 1].title}</b>
+        <Box sx={{ marginTop: -0.75 }}>
+          <Box>
+            #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>
+          </Box>
+          <Box>
+            <b>{massdk[cH - 1].title}</b>
+          </Box>
         </Box>
       </Box>
     );
@@ -129,7 +133,7 @@ const MarketSpis = (props: {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box sx={{ fontSize: 18, marginLeft: 2, height: '27px' }}>
+        <Box sx={{ color: '#A73AFD', fontSize: 18, marginLeft: 2, height: '27px' }}>
           <b>Каталог</b>
         </Box>
         <Box sx={styleBl1Form02(shift)}>{StrokaSpis()}</Box>

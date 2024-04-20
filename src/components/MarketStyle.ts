@@ -47,6 +47,7 @@ export const styleBl1Form01 = (part: number) => {
     borderRadius: 1,
     margin: '5px 2px 0px 1px',
     height: window.innerHeight - part,
+    width: '100%',
   };
   return styleBl3Form;
 };
@@ -83,6 +84,8 @@ export const styleWVI01 = {
 export const styleWVI02 = {
   fontSize: 17,
   height: '33px',
+  width: '212px',
+  marginBottom: 2,
   bgcolor: '#A73AFD', // сиреневый
   border: '1px solid #d4d4d4', // серый
   borderRadius: 1,
@@ -91,10 +94,22 @@ export const styleWVI02 = {
   boxShadow: 5,
 };
 
+export const styleWVI022 = {
+  fontSize: 17,
+  height: '33px',
+  width: '212px',
+  bgcolor: '#E8CCFF', // бледно-сиреневый
+  border: '1px solid #d4d4d4', // серый
+  borderRadius: 1,
+  color: '#A73AFD', // сиреневый
+  textTransform: 'unset !important',
+  boxShadow: 5,
+};
+
 export const styleWVI03 = {
   textAlign: 'center',
   marginTop: 1,
-  height: window.innerHeight * 0.772,
+  height: window.innerHeight * 0.705,
 };
 
 //=== InputAdress =====================================================

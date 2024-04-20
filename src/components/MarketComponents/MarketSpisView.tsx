@@ -10,7 +10,7 @@ import Modal from '@mui/material/Modal';
 //import { ReplaceInSvg } from "../../MapServiceFunctions";
 
 import { styleModalEnd, styleWVI00, styleWVI01 } from './../MarketStyle';
-import { styleWVI02, styleWVI03 } from './../MarketStyle';
+import { styleWVI02, styleWVI03, styleWVI022 } from './../MarketStyle';
 
 const MarketSpisView = (props: {
   close: Function; // функция возврата в родительский компонент
@@ -96,6 +96,9 @@ const MarketSpisView = (props: {
             </Box>
             <Button sx={styleWVI02} onClick={() => ClickBasket()}>
               Добавить в корзину
+            </Button>
+            <Button sx={styleWVI022} onClick={() => ClickBasket()}>
+              Купить сейчас
             </Button>
           </Grid>
         </Grid>

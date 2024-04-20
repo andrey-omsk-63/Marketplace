@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 
 import MarketSpis from './MarketComponents/MarketSpis';
 import MarketBasket from './MarketComponents/MarketBasket';
+import MarketOrder from './MarketComponents/MarketOrder';
 
 import { styleMain01, styleMain02 } from './MarketStyle';
 
@@ -36,6 +37,7 @@ const MarketMain = (props: {}) => {
   //===========================================================
   const [dispBlock1, setDispBlock1] = React.useState(true);
   const [dispBlock2, setDispBlock2] = React.useState(false);
+  const [dispBlock3, setDispBlock3] = React.useState(false);
 
   const [trigger, setTrigger] = React.useState(false);
 
@@ -44,10 +46,17 @@ const MarketMain = (props: {}) => {
   //========================================================
   const Turn01 = () => {
     setDispBlock2(false);
+    setDispBlock3(false);
   };
 
   const Turn02 = () => {
     setDispBlock1(false);
+    setDispBlock3(false);
+  };
+
+  const Turn03 = () => {
+    setDispBlock1(false);
+    setDispBlock2(false);
   };
   //=== Функции - обработчики ==============================
   const ClickKnop1 = () => {
@@ -61,6 +70,11 @@ const MarketMain = (props: {}) => {
     Turn02();
     setDispBlock2(true);
   };
+  const ClickKnop3 = () => {
+    ILLUM = 3;
+    Turn03();
+    setDispBlock3(true);
+  };
   //=== Компоненты =========================================
   const actionKnopSpis = () => {
     return (
@@ -72,6 +86,16 @@ const MarketMain = (props: {}) => {
     );
   };
   //🧾
+
+  const actionKnopOrder = () => {
+    return (
+      <Grid item xs={1.5}>
+        <Button sx={styleMain02(1.5, ILLUM, 3)} onClick={() => ClickKnop3()}>
+          📦Заказы
+        </Button>
+      </Grid>
+    );
+  };
 
   const actionKnopBasket = () => {
     return (
@@ -100,13 +124,16 @@ const MarketMain = (props: {}) => {
         <Grid container sx={{ height: '30px', fontSize: 12.9 }}>
           {/* Каталог */}
           {actionKnopSpis()}
-          <Grid item xs={9}></Grid>
+          <Grid item xs={7.5}></Grid>
+          {/* Заказы */}
+          {actionKnopOrder()}
           {/* Корзина */}
           {actionKnopBasket()}
         </Grid>
       </Grid>
       {dispBlock1 && <MarketSpis trigger={SetTrigger} />}
       {dispBlock2 && <MarketBasket />}
+      {dispBlock3 && <MarketOrder />}
     </Grid>
   );
 };
