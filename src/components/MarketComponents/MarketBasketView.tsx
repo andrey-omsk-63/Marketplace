@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { massrouteCreate } from './../../redux/actions';
+import { massrouteCreate, massrouteproCreate } from './../../redux/actions';
+import { statsaveCreate } from './../../redux/actions';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
-//import { ReplaceInSvg } from "../../MapServiceFunctions";
+import MarketErrorMessage from './MarketErrorMessage';
 
 import { styleModalEnd, styleWVI00, styleWVI01 } from './../MarketStyle';
 import { styleWVI02, styleWVI03, styleWVI022 } from './../MarketStyle';
+
+let soobErr = '';
 
 const MarketBasketView = (props: {
   close: Function; // функция возврата в родительский компонент
@@ -26,10 +29,20 @@ const MarketBasketView = (props: {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
   });
-  console.log('massroute:', massroute);
+
+  let massroutepro = useSelector((state: any) => {
+    const { massrouteproReducer } = state;
+    return massrouteproReducer.massroutepro;
+  });
+
+  let datestat = useSelector((state: any) => {
+    const { statsaveReducer } = state;
+    return statsaveReducer.datestat;
+  });
   const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(true);
+  const [openErr, setOpenErr] = React.useState(false);
 
   //=== инициализация ======================================
   //========================================================
@@ -58,21 +71,35 @@ const MarketBasketView = (props: {
     return () => document.removeEventListener('keydown', escFunction);
   }, [escFunction]);
   //=== Функции - обработчики ==============================
-  const ClickBasket = () => {
-    let rec = massroute[props.idx];
-    massroute.push(rec);
-    dispatch(massrouteCreate(massroute));
-    props.trigger();
-    props.close(false);
-  };
-
-  const ClickDel = () => {
+  const DeleteRecInBasket = () => {
     let massRab = [];
     for (let i = 0; i < massroute.length; i++)
       if (i !== props.idx) massRab.push({ ...massroute[i] });
     massroute = [];
     massroute = massRab;
     dispatch(massrouteCreate(massroute));
+  };
+
+  const ClickOrder = () => {
+    if (massroute[props.idx].price <= datestat.balansCoin) {
+      // Покупка
+      let rec = massroute[props.idx];
+      massroutepro.push(rec); // запись в зaказы
+      dispatch(massrouteproCreate(massroutepro));
+      datestat.balansCoin = datestat.balansCoin - massroute[props.idx].price; // списание средств
+      dispatch(statsaveCreate(datestat));
+      DeleteRecInBasket();
+      props.trigger();
+      props.close(false);
+    } else {
+      // Пополнить баланс
+      soobErr = 'Нехватка средств (Coin) на счету, необходимо пополнить баланс';
+      setOpenErr(true);
+    }
+  };
+
+  const ClickDel = () => {
+    DeleteRecInBasket();
     props.trigger();
     props.close(false);
   };
@@ -100,7 +127,7 @@ const MarketBasketView = (props: {
                 <em>Описание:</em>
               </b>
             </Box>
-            <Button sx={styleWVI02} onClick={() => ClickBasket()}>
+            <Button sx={styleWVI02} onClick={() => ClickOrder()}>
               Оформить товар
             </Button>
             <Button sx={styleWVI022} onClick={() => ClickDel()}>
@@ -116,6 +143,7 @@ const MarketBasketView = (props: {
             <b>{massroute[props.idx].title}</b>
           </Box>
         </Box>
+        {openErr && <MarketErrorMessage setOpen={setOpenErr} sErr={soobErr} />}
       </Box>
     </Modal>
   );

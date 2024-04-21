@@ -13,8 +13,9 @@ import Button from '@mui/material/Button';
 import MarketSpis from './MarketComponents/MarketSpis';
 import MarketBasket from './MarketComponents/MarketBasket';
 import MarketOrder from './MarketComponents/MarketOrder';
+import MarketСonversion from './MarketComponents/MarketСonversion';
 
-import { styleMain01, styleMain02, styleMain03 } from './MarketStyle';
+import { styleMain01, styleMain02 } from './MarketStyle';
 
 export let ILLUM = 1; // номер активной кнопки меню
 export let FORM3 = '0'; // какую форму Справочная информация выдать через диспетчер
@@ -35,12 +36,17 @@ const MarketMain = (props: {}) => {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
   });
+  let massroutepro = useSelector((state: any) => {
+    const { massrouteproReducer } = state;
+    return massrouteproReducer.massroutepro;
+  });
   //console.log('datestat:', datestat);
   ////const dispatch = useDispatch();
   //===========================================================
   const [dispBlock1, setDispBlock1] = React.useState(true);
   const [dispBlock2, setDispBlock2] = React.useState(false);
   const [dispBlock3, setDispBlock3] = React.useState(false);
+  const [dispBlock4, setDispBlock4] = React.useState(false);
 
   const [trigger, setTrigger] = React.useState(false);
 
@@ -50,16 +56,25 @@ const MarketMain = (props: {}) => {
   const Turn01 = () => {
     setDispBlock2(false);
     setDispBlock3(false);
+    setDispBlock4(false);
   };
 
   const Turn02 = () => {
     setDispBlock1(false);
     setDispBlock3(false);
+    setDispBlock4(false);
   };
 
   const Turn03 = () => {
     setDispBlock1(false);
     setDispBlock2(false);
+    setDispBlock4(false);
+  };
+
+  const Turn04 = () => {
+    setDispBlock1(false);
+    setDispBlock2(false);
+    setDispBlock3(false);
   };
   //=== Функции - обработчики ==============================
   const ClickKnop1 = () => {
@@ -78,6 +93,12 @@ const MarketMain = (props: {}) => {
     Turn03();
     setDispBlock3(true);
   };
+
+  const ClickKnop4 = () => {
+    ILLUM = 4;
+    Turn04();
+    setDispBlock4(true);
+  };
   //=== Компоненты =========================================
   const actionKnopSpis = () => {
     return (
@@ -95,6 +116,13 @@ const MarketMain = (props: {}) => {
       <Grid item xs={1.5}>
         <Button sx={styleMain02(1.5, ILLUM, 3)} onClick={() => ClickKnop3()}>
           📦Заказы
+          {massroutepro.length > 0 && (
+            <Box>
+              {' ('}
+              {massroutepro.length}
+              {')'}
+            </Box>
+          )}
         </Button>
       </Grid>
     );
@@ -118,11 +146,12 @@ const MarketMain = (props: {}) => {
   };
 
   const BalansField = () => {
+    let soob1 = 'Ваш баланс: ' + datestat.balansCoin + 'Coin ' + datestat.balans$ + '$';
     return (
       <Grid item xs={2.0}>
-        <Box sx={styleMain03}>
-          <em>Ваш баланс:</em> <b>{datestat.balansCoin}</b>Coin <b>{datestat.balans$}</b>$
-        </Box>
+        <Button sx={styleMain02(2.0, ILLUM, 4)} onClick={() => ClickKnop4()}>
+          {soob1}
+        </Button>
       </Grid>
     );
   };
@@ -149,6 +178,7 @@ const MarketMain = (props: {}) => {
       {dispBlock1 && <MarketSpis trigger={SetTrigger} />}
       {dispBlock2 && <MarketBasket trigger={SetTrigger} />}
       {dispBlock3 && <MarketOrder />}
+      {dispBlock4 && <MarketСonversion close={setDispBlock4} />}
     </Grid>
   );
 };

@@ -19,10 +19,6 @@ const MarketBasket = (props: {
   trigger: Function; // функция для ререндера в родительском компоненте
 }) => {
   //== Piece of Redux =======================================
-  // let datestat = useSelector((state: any) => {
-  //   const { statsaveReducer } = state;
-  //   return statsaveReducer.datestat;
-  // });
   let massroute = useSelector((state: any) => {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
@@ -40,7 +36,7 @@ const MarketBasket = (props: {
 
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
-    console.log('Click:', IDX, massroute[IDX].id);
+    //console.log('Click:', IDX, massroute[IDX].id);
     setOpenImg(true);
   };
 

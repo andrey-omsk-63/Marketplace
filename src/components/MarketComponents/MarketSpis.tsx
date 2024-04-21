@@ -22,15 +22,10 @@ const MarketSpis = (props: {
   trigger: Function; // функция для ререндера в родительском компоненте
 }) => {
   //== Piece of Redux =======================================
-  // let datestat = useSelector((state: any) => {
-  //   const { statsaveReducer } = state;
-  //   return statsaveReducer.datestat;
-  // });
   let massdk = useSelector((state: any) => {
     const { massdkReducer } = state;
     return massdkReducer.massdk;
   });
-  //console.log('MASSDK:', massdk);
   //const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
@@ -42,7 +37,7 @@ const MarketSpis = (props: {
 
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
-    console.log('Click:', IDX, massdk[IDX].id);
+    //console.log('Click:', IDX, massdk[IDX].id);
     setOpenImg(true);
   };
 
