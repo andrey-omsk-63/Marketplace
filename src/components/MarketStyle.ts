@@ -39,12 +39,21 @@ export const styleMain02 = (part: number, ILLUM: number, mode: number) => {
   };
   return styleMain040;
 };
+
+export const styleMain03 = {
+  border: 0,
+  height: '24px',
+  textAlign: 'center',
+  fontSize: 14.0,
+  padding: '5px 0px 0px 0px',
+  textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+};
 //=== MarketSpis ======================================================
 export const styleBl1Form01 = (part: number) => {
   const styleBl3Form = {
-    bgcolor: 'background.paper',
-    border: '1px solid #FFFFFF',
-    borderRadius: 1,
+    //bgcolor: 'background.paper',
+    //border: '1px solid #FFFFFF',
+    //borderRadius: 1,
     margin: '5px 2px 0px 1px',
     height: window.innerHeight - part,
     width: '100%',

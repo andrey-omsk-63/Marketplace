@@ -16,11 +16,11 @@ const MarketOrder = () => {
   //   const { statsaveReducer } = state;
   //   return statsaveReducer.datestat;
   // });
-  let massroutePro = useSelector((state: any) => {
-    const { massrouteReducer } = state;
-    return massrouteReducer.massroute;
+  let massroutepro = useSelector((state: any) => {
+    const { massrouteproReducer } = state;
+    return massrouteproReducer.massroutepro;
   });
-  //console.log('MASSDK:', massdk);
+  //console.log('massroutePro:', massroutePro);
   //const dispatch = useDispatch();
   return (
     <Grid container sx={styleBl1Form01(40)}>
@@ -29,7 +29,7 @@ const MarketOrder = () => {
           <b>Покупки</b>
         </Box>
       </Grid>
-      {massroutePro.length === 0 ? (
+      {massroutepro.length === 0 ? (
         <Box sx={{ width: '100%', color: '#7620A2', textAlign: 'center' }}>
           <h1>Покупок пока нет</h1>
         </Box>

@@ -83,7 +83,7 @@ const MarketBasket = (props: {
             </Grid>
             <Box sx={{ marginTop: -0.75 }} onClick={() => ClPnt(i, j)}>
               <Box>
-                #<b>{massroute[cH - 1].id}</b> Цена: <b>{massroute[cH - 1].price}</b>
+                #<b>{massroute[cH - 1].id}</b> Цена: <b>{massroute[cH - 1].price}</b>Coin
               </Box>
               <Box>
                 <b>{massroute[cH - 1].title}</b>

@@ -71,6 +71,17 @@ const MarketSpisView = (props: {
     props.close(false);
   };
 
+  const ClickOrder = () => {
+    let rec = massdk[props.idx];
+    massroute.push(rec);
+    dispatch(massrouteCreate(massroute));
+
+    console.log('111massroute:', massroute);
+
+    props.trigger();
+    props.close(false);
+  };
+
   return (
     <Modal open={openImg} onClose={CloseEndGl} hideBackdrop={false}>
       <Box sx={styleWVI00}>
@@ -97,14 +108,14 @@ const MarketSpisView = (props: {
             <Button sx={styleWVI02} onClick={() => ClickBasket()}>
               Добавить в корзину
             </Button>
-            <Button sx={styleWVI022} onClick={() => ClickBasket()}>
+            <Button sx={styleWVI022} onClick={() => ClickOrder()}>
               Купить сейчас
             </Button>
           </Grid>
         </Grid>
         <Box sx={{ textAlign: 'left', padding: '5px 0px 0px 10px' }}>
           <Box>
-            #<b>{massdk[props.idx].id}</b> Цена: <b>{massdk[props.idx].price}</b>
+            #<b>{massdk[props.idx].id}</b> Цена: <b>{massdk[props.idx].price}</b>Coin
           </Box>
           <Box>
             <b>{massdk[props.idx].title}</b>

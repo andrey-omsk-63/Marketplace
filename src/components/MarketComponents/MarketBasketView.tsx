@@ -110,7 +110,7 @@ const MarketBasketView = (props: {
         </Grid>
         <Box sx={{ textAlign: 'left', padding: '5px 0px 0px 10px' }}>
           <Box>
-            #<b>{massroute[props.idx].id}</b> Цена: <b>{massroute[props.idx].price}</b>
+            #<b>{massroute[props.idx].id}</b> Цена: <b>{massroute[props.idx].price}</b>Coin
           </Box>
           <Box>
             <b>{massroute[props.idx].title}</b>

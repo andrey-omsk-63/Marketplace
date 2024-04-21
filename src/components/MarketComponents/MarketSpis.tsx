@@ -57,7 +57,7 @@ const MarketSpis = (props: {
             </Box>
             <Box sx={{ marginTop: -0.75 }}>
               <Box>
-                #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>
+                #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>Coin
               </Box>
               <Box>
                 <b>{massdk[cH - 1].title}</b>

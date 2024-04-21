@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { massdkCreate } from './redux/actions';
+import { massdkCreate, statsaveCreate } from './redux/actions';
 
 import Grid from '@mui/material/Grid';
 
@@ -10,7 +10,7 @@ import MarketMain from './components/MarketMain';
 
 import { PlanCoord } from './interfacePlans.d';
 
-//import { dataMap } from "./otladkaMaps";
+import { DOLLARS, COINS } from './MarketConst'; // Баланс долларов, коинов
 
 export let dateMapGl: any;
 export let dateRouteGl: any;
@@ -49,31 +49,13 @@ export interface Directions {
 }
 
 export interface Stater {
-  ws: any;
-  debug: boolean;
-  oldIdxForm: number;
-  needMakeSpisPK: boolean; // вызов списка ПК после корректровки ПК
-  lockUp: boolean; // блокировка меню районов и меню режимов
-  needMenuForm: boolean; // выводить меню форм ПК
-  idxMenu: number; // активная строка списка ПК
-  nomMenu: number; // номер активного плана ПК
-  exampleImg1: any; // отладочное изображение перекрёстка
-  exampleImg2: any; // отладочное изображение перекрёстка
-  have: 0; // счётчик изменений в форме параметров перекрёстка
+  balans$: number;
+  balansCoin: number;
 }
 
 export let dateStat: Stater = {
-  ws: null,
-  debug: false,
-  oldIdxForm: -1,
-  needMakeSpisPK: true,
-  lockUp: false,
-  needMenuForm: false,
-  idxMenu: 0,
-  nomMenu: -1, // номер активного плана ПК
-  exampleImg1: null,
-  exampleImg2: null,
-  have: 0,
+  balans$: 0, // Баланс долларов
+  balansCoin: 0, // Баланс коинов
 };
 
 export let massRoute: Router[] = [];
@@ -127,6 +109,9 @@ const App = () => {
       flagOpen = true;
       setTrigger(!trigger);
     });
+    dateStat.balans$ = DOLLARS;
+    dateStat.balansCoin = COINS;
+    dispatch(statsaveCreate(dateStat));
   }
 
   return (

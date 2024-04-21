@@ -14,7 +14,7 @@ import MarketSpis from './MarketComponents/MarketSpis';
 import MarketBasket from './MarketComponents/MarketBasket';
 import MarketOrder from './MarketComponents/MarketOrder';
 
-import { styleMain01, styleMain02 } from './MarketStyle';
+import { styleMain01, styleMain02, styleMain03 } from './MarketStyle';
 
 export let ILLUM = 1; // номер активной кнопки меню
 export let FORM3 = '0'; // какую форму Справочная информация выдать через диспетчер
@@ -23,10 +23,10 @@ export let widthGl = window.innerWidth - 3; // ширина окна брауз�
 
 const MarketMain = (props: {}) => {
   //== Piece of Redux =======================================
-  // let datestat = useSelector((state: any) => {
-  //   const { statsaveReducer } = state;
-  //   return statsaveReducer.datestat;
-  // });
+  let datestat = useSelector((state: any) => {
+    const { statsaveReducer } = state;
+    return statsaveReducer.datestat;
+  });
   // let massdk = useSelector((state: any) => {
   //   const { massdkReducer } = state;
   //   return massdkReducer.massdk;
@@ -35,7 +35,7 @@ const MarketMain = (props: {}) => {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
   });
-  //console.log("MASSDK:", massdk);
+  //console.log('datestat:', datestat);
   ////const dispatch = useDispatch();
   //===========================================================
   const [dispBlock1, setDispBlock1] = React.useState(true);
@@ -117,6 +117,16 @@ const MarketMain = (props: {}) => {
     );
   };
 
+  const BalansField = () => {
+    return (
+      <Grid item xs={2.0}>
+        <Box sx={styleMain03}>
+          <em>Ваш баланс:</em> <b>{datestat.balansCoin}</b>Coin <b>{datestat.balans$}</b>$
+        </Box>
+      </Grid>
+    );
+  };
+
   const SetTrigger = () => {
     setTrigger(!trigger);
   };
@@ -127,11 +137,13 @@ const MarketMain = (props: {}) => {
         <Grid container sx={{ height: '30px', fontSize: 12.9 }}>
           {/* Каталог */}
           {actionKnopSpis()}
-          <Grid item xs={7.5}></Grid>
+          <Grid item xs={5.5}></Grid>
           {/* Заказы */}
           {actionKnopOrder()}
           {/* Корзина */}
           {actionKnopBasket()}
+          {/* Баланс */}
+          {BalansField()}
         </Grid>
       </Grid>
       {dispBlock1 && <MarketSpis trigger={SetTrigger} />}
