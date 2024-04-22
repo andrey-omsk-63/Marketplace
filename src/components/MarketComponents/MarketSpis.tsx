@@ -1,17 +1,14 @@
-import * as React from 'react';
-import {
-  //useDispatch,
-  useSelector,
-} from 'react-redux';
+import * as React from "react";
+import { useSelector } from "react-redux";
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 //import Button from '@mui/material/Button';
 
-import MarketSpisView from './MarketSpisView';
+import MarketSpisView from "./MarketSpisView";
 
-import { styleBl1Form01, styleBl1Form02, styleBl1Form03 } from './../MarketStyle';
-import { styleBl1Form04 } from './../MarketStyle';
+import { styleBl1Form01, styleBl1Form02 } from "./../MarketStyle";
+import { styleBl1Form03, styleBl1Form04 } from "./../MarketStyle";
 
 const shift = 95;
 let IDX = -1;
@@ -26,7 +23,6 @@ const MarketSpis = (props: {
     const { massdkReducer } = state;
     return massdkReducer.massdk;
   });
-  //const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
 
@@ -37,7 +33,7 @@ const MarketSpis = (props: {
 
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
-    //console.log('Click:', IDX, massdk[IDX].id);
+
     setOpenImg(true);
   };
 
@@ -48,11 +44,17 @@ const MarketSpis = (props: {
         {cH <= massdk.length && (
           <Box sx={styleBl1Form04(ht)}>
             <Box sx={{ height: ht - 45 }}>
-              <img src={massdk[cH - 1].thumbnail} height={ht - 55} width={'58%'} alt="Pict" />
+              <img
+                src={massdk[cH - 1].thumbnail}
+                height={ht - 55}
+                width={"58%"}
+                alt="Pict"
+              />
             </Box>
             <Box sx={{ marginTop: -0.75 }}>
               <Box>
-                #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>Coin
+                #<b>{massdk[cH - 1].id}</b> Цена: <b>{massdk[cH - 1].price}</b>
+                Coin
               </Box>
               <Box>
                 <b>{massdk[cH - 1].title}</b>
@@ -90,7 +92,7 @@ const MarketSpis = (props: {
               </Grid>
             </Grid>
           </Grid>
-        </Grid>,
+        </Grid>
       );
     }
     return resStr;
@@ -99,11 +101,19 @@ const MarketSpis = (props: {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box sx={{ color: '#7620A2', fontSize: 18, marginLeft: 2, height: '27px' }}>
+        <Box
+          sx={{ color: "#7620A2", fontSize: 18, marginLeft: 2, height: "27px" }}
+        >
           <b>Каталог</b>
         </Box>
         <Box sx={styleBl1Form02(shift)}>{StrokaSpis()}</Box>
-        {openImg && <MarketSpisView close={setOpenImg} idx={IDX} trigger={props.trigger} />}
+        {openImg && (
+          <MarketSpisView
+            close={setOpenImg}
+            idx={IDX}
+            trigger={props.trigger}
+          />
+        )}
       </Grid>
     </Grid>
   );

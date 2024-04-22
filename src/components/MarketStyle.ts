@@ -165,4 +165,67 @@ export const styleFormEnd = {
   color: '#801F95', // сиреневый
   textShadow: '2px 2px 3px rgba(0,0,0,0.3)',
 };
+//=== MarketСonversion ================================================
+export const styleConv00 = {
+  fontSize: 19.0,
+  outline: "none",
+  position: "absolute",
+  left: "50%",
+  top: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 500,
+  height: 230,
+  bgcolor: "background.paper",
+  border: "1px solid #FFFFFF",
+  borderRadius: 1,
+  color: "#7620a2", // сиреневый
+  boxShadow: 24,
+  textAlign: "center",
+  padding: "5px 5px 5px 5px",
+};
+
+export const styleConv01 = {
+  width: "48px",
+  maxHeight: "24px",
+  minHeight: "24px",
+};
+
+export const styleConv02 = {
+  "& > :not(style)": {
+    maxHeight: "24px",
+    minHeight: "24px",
+    border: "1px solid #d4d4d4", // серый
+    borderRadius: 2,
+    marginTop: "-4px",
+    marginLeft: "0px",
+    width: "48px",
+    boxShadow: 6,
+  },
+};
+
+export const styleConv03 = {
+  width: "212px",
+  marginTop: -3.5,
+  marginLeft: 6.5,
+  textAlign: "left",
+};
+
+export const styleConv04 = {
+  marginTop: 2.2,
+  display: "flex",
+  justifyContent: "center",
+};
+
+export const styleConv05 = {
+  maxHeight: "30px",
+  minHeight: "30px",
+  bgcolor: "#E6F5D6", // светло салатовый
+  border: "1px solid #000",
+  borderRadius: 1,
+  borderColor: "#d4d4d4", // серый
+  textTransform: "unset !important",
+  boxShadow: 6,
+  textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
+  color: "#5B1080", // сиреневый
+};
 //=== InputAdress =====================================================

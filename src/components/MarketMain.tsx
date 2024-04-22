@@ -1,25 +1,25 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   //useDispatch,
   useSelector,
-} from 'react-redux';
+} from "react-redux";
 //import { statsaveCreate } from "../redux/actions";
 //import imageCompression from 'browser-image-compression';
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
-import MarketSpis from './MarketComponents/MarketSpis';
-import MarketBasket from './MarketComponents/MarketBasket';
-import MarketOrder from './MarketComponents/MarketOrder';
-import MarketСonversion from './MarketComponents/MarketСonversion';
+import MarketSpis from "./MarketComponents/MarketSpis";
+import MarketBasket from "./MarketComponents/MarketBasket";
+import MarketOrder from "./MarketComponents/MarketOrder";
+import MarketСonversion from "./MarketComponents/MarketСonversion";
 
-import { styleMain01, styleMain02 } from './MarketStyle';
+import { styleMain01, styleMain02 } from "./MarketStyle";
 
 export let ILLUM = 1; // номер активной кнопки меню
-export let FORM3 = '0'; // какую форму Справочная информация выдать через диспетчер
-export let FORM5 = '0'; // какую форму Ввода данных выдать через диспетчер
+export let FORM3 = "0"; // какую форму Справочная информация выдать через диспетчер
+export let FORM5 = "0"; // какую форму Ввода данных выдать через диспетчер
 export let widthGl = window.innerWidth - 3; // ширина окна браузера
 
 const MarketMain = (props: {}) => {
@@ -53,6 +53,11 @@ const MarketMain = (props: {}) => {
   //=== инициализация ======================================
 
   //========================================================
+  const RandomNumber = (min: number, max: number) => {
+    let rand = Math.random() * (max - min) + min;
+    return Math.floor(rand);
+  };
+
   const Turn01 = () => {
     setDispBlock2(false);
     setDispBlock3(false);
@@ -118,9 +123,9 @@ const MarketMain = (props: {}) => {
           📦Заказы
           {massroutepro.length > 0 && (
             <Box>
-              {' ('}
+              {" ("}
               {massroutepro.length}
-              {')'}
+              {")"}
             </Box>
           )}
         </Button>
@@ -132,12 +137,12 @@ const MarketMain = (props: {}) => {
     return (
       <Grid item xs={1.5}>
         <Button sx={styleMain02(1.5, ILLUM, 2)} onClick={() => ClickKnop2()}>
-          🛒Корзина{' '}
+          🛒Корзина{" "}
           {massroute.length > 0 && (
             <Box>
-              {' ('}
+              {" ("}
               {massroute.length}
-              {')'}
+              {")"}
             </Box>
           )}
         </Button>
@@ -146,7 +151,8 @@ const MarketMain = (props: {}) => {
   };
 
   const BalansField = () => {
-    let soob1 = 'Ваш баланс: ' + datestat.balansCoin + 'Coin ' + datestat.balans$ + '$';
+    let soob1 =
+      "Ваш баланс: " + datestat.balansCoin + "Coin и " + datestat.balans$ + "$";
     return (
       <Grid item xs={2.0}>
         <Button sx={styleMain02(2.0, ILLUM, 4)} onClick={() => ClickKnop4()}>
@@ -162,8 +168,8 @@ const MarketMain = (props: {}) => {
 
   return (
     <Grid container sx={styleMain01}>
-      <Grid item xs={12} sx={{ height: '30px' }}>
-        <Grid container sx={{ height: '30px', fontSize: 12.9 }}>
+      <Grid item xs={12} sx={{ height: "30px" }}>
+        <Grid container sx={{ height: "30px", fontSize: 12.9 }}>
           {/* Каталог */}
           {actionKnopSpis()}
           <Grid item xs={5.5}></Grid>
@@ -178,7 +184,9 @@ const MarketMain = (props: {}) => {
       {dispBlock1 && <MarketSpis trigger={SetTrigger} />}
       {dispBlock2 && <MarketBasket trigger={SetTrigger} />}
       {dispBlock3 && <MarketOrder />}
-      {dispBlock4 && <MarketСonversion close={setDispBlock4} />}
+      {dispBlock4 && (
+        <MarketСonversion close={setDispBlock4} idx={RandomNumber(1, 10000)} />
+      )}
     </Grid>
   );
 };

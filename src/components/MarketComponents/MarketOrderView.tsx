@@ -1,19 +1,13 @@
-import * as React from 'react';
-import {
-  //useDispatch,
-  useSelector,
-} from 'react-redux';
-//import { massrouteCreate } from './../../redux/actions';
+import * as React from "react";
+import { useSelector } from "react-redux";
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 
-//import { ReplaceInSvg } from "../../MapServiceFunctions";
-
-import { styleModalEnd, styleWVI00, styleWVI01 } from './../MarketStyle';
-import { styleWVI03 } from './../MarketStyle';
+import { styleModalEnd, styleWVI00, styleWVI01 } from "./../MarketStyle";
+import { styleWVI03 } from "./../MarketStyle";
 
 const MarketOrderView = (props: {
   close: Function; // функция возврата в родительский компонент
@@ -25,8 +19,6 @@ const MarketOrderView = (props: {
     const { massrouteproReducer } = state;
     return massrouteproReducer.massroutepro;
   });
-  //console.log('massroute:', massroute);
-  //const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(true);
 
@@ -42,12 +34,12 @@ const MarketOrderView = (props: {
     (event) => {
       if (event.keyCode === 27) CloseEnd();
     },
-    [CloseEnd],
+    [CloseEnd]
   );
 
   React.useEffect(() => {
-    document.addEventListener('keydown', escFunction);
-    return () => document.removeEventListener('keydown', escFunction);
+    document.addEventListener("keydown", escFunction);
+    return () => document.removeEventListener("keydown", escFunction);
   }, [escFunction]);
   //=== Функции - обработчики ==============================
 
@@ -59,7 +51,7 @@ const MarketOrderView = (props: {
   };
 
   const CloseEndGl = (event: any, reason: string) => {
-    if (reason === 'escapeKeyDown') handleClose();
+    if (reason === "escapeKeyDown") handleClose();
   };
 
   return (
@@ -74,7 +66,7 @@ const MarketOrderView = (props: {
               <img
                 src={massroutepro[props.idx].thumbnail}
                 height={window.innerHeight * 0.8}
-                width={'95%'}
+                width={"95%"}
                 alt="PICT"
               />
             </Box>
@@ -88,9 +80,10 @@ const MarketOrderView = (props: {
             <Box>Срок доставки 3 дня</Box>
           </Grid>
         </Grid>
-        <Box sx={{ textAlign: 'left', padding: '5px 0px 0px 10px' }}>
+        <Box sx={{ textAlign: "left", padding: "5px 0px 0px 10px" }}>
           <Box>
-            #<b>{massroutepro[props.idx].id}</b> Цена: <b>{massroutepro[props.idx].price}</b>Coin
+            #<b>{massroutepro[props.idx].id}</b> Цена:{" "}
+            <b>{massroutepro[props.idx].price}</b>Coin
           </Box>
           <Box>
             <b>{massroutepro[props.idx].title}</b>

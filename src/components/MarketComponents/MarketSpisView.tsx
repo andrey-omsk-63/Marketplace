@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { massrouteCreate, massrouteproCreate } from './../../redux/actions';
-import { statsaveCreate } from './../../redux/actions';
+import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { massrouteCreate, massrouteproCreate } from "./../../redux/actions";
+import { statsaveCreate } from "./../../redux/actions";
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 
-import MarketErrorMessage from './MarketErrorMessage';
+import MarketErrorMessage from "./MarketErrorMessage";
 
-import { styleModalEnd, styleWVI00, styleWVI01 } from './../MarketStyle';
-import { styleWVI02, styleWVI03, styleWVI022 } from './../MarketStyle';
+import { styleModalEnd, styleWVI00, styleWVI01 } from "./../MarketStyle";
+import { styleWVI02, styleWVI03, styleWVI022 } from "./../MarketStyle";
 
-let soobErr = '';
+let soobErr = "";
 
 const MarketSpisView = (props: {
   close: Function; // функция возврата в родительский компонент
@@ -58,12 +58,12 @@ const MarketSpisView = (props: {
     (event) => {
       if (event.keyCode === 27) CloseEnd();
     },
-    [CloseEnd],
+    [CloseEnd]
   );
 
   React.useEffect(() => {
-    document.addEventListener('keydown', escFunction);
-    return () => document.removeEventListener('keydown', escFunction);
+    document.addEventListener("keydown", escFunction);
+    return () => document.removeEventListener("keydown", escFunction);
   }, [escFunction]);
   //=== Функции - обработчики ==============================
 
@@ -75,7 +75,7 @@ const MarketSpisView = (props: {
   };
 
   const CloseEndGl = (event: any, reason: string) => {
-    if (reason === 'escapeKeyDown') handleClose();
+    if (reason === "escapeKeyDown") handleClose();
   };
 
   const ClickBasket = () => {
@@ -99,7 +99,7 @@ const MarketSpisView = (props: {
       props.close(false);
     } else {
       // Пополнить баланс
-      soobErr = 'Нехватка средств (Coin) на счету, необходимо пополнить баланс';
+      soobErr = "Нехватка средств (Coin) на счету, необходимо пополнить баланс";
       setOpenErr(true);
     }
   };
@@ -116,7 +116,7 @@ const MarketSpisView = (props: {
               <img
                 src={massdk[props.idx].thumbnail}
                 height={window.innerHeight * 0.8}
-                width={'95%'}
+                width={"95%"}
                 alt="PICT"
               />
             </Box>
@@ -135,9 +135,10 @@ const MarketSpisView = (props: {
             </Button>
           </Grid>
         </Grid>
-        <Box sx={{ textAlign: 'left', padding: '5px 0px 0px 10px' }}>
+        <Box sx={{ textAlign: "left", padding: "5px 0px 0px 10px" }}>
           <Box>
-            #<b>{massdk[props.idx].id}</b> Цена: <b>{massdk[props.idx].price}</b>Coin
+            #<b>{massdk[props.idx].id}</b> Цена:{" "}
+            <b>{massdk[props.idx].price}</b>Coin
           </Box>
           <Box>
             <b>{massdk[props.idx].title}</b>

@@ -21,10 +21,6 @@ const MarketBasketView = (props: {
   trigger: Function; // функция для ререндера в родительском компоненте
 }) => {
   //== Piece of Redux =======================================
-  // let massdk = useSelector((state: any) => {
-  //   const { massdkReducer } = state;
-  //   return massdkReducer.massdk;
-  // });
   let massroute = useSelector((state: any) => {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;

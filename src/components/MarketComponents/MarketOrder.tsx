@@ -1,17 +1,14 @@
-import * as React from 'react';
-import {
-  //useDispatch,
-  useSelector,
-} from 'react-redux';
+import * as React from "react";
+import { useSelector } from "react-redux";
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 //import Button from '@mui/material/Button';
 
-import MarketOrderView from './MarketOrderView';
+import MarketOrderView from "./MarketOrderView";
 
-import { styleBl1Form01, styleBl1Form02, styleBl1Form03 } from './../MarketStyle';
-import { styleBl1Form04 } from './../MarketStyle';
+import { styleBl1Form01, styleBl1Form02 } from "./../MarketStyle";
+import { styleBl1Form03, styleBl1Form04 } from "./../MarketStyle";
 
 const shift = 95;
 let IDX = -1;
@@ -23,7 +20,6 @@ const MarketOrder = () => {
     const { massrouteproReducer } = state;
     return massrouteproReducer.massroutepro;
   });
-  //const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
 
@@ -35,7 +31,6 @@ const MarketOrder = () => {
 
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
-    //console.log('Click:', IDX, massroutepro[IDX].id);
     setOpenImg(true);
   };
 
@@ -46,11 +41,17 @@ const MarketOrder = () => {
         {cH <= massroutepro.length && (
           <Box sx={styleBl1Form04(ht)}>
             <Box sx={{ height: ht - 45 }}>
-              <img src={massroutepro[cH - 1].thumbnail} height={ht - 55} width={'58%'} alt="Pict" />
+              <img
+                src={massroutepro[cH - 1].thumbnail}
+                height={ht - 55}
+                width={"58%"}
+                alt="Pict"
+              />
             </Box>
             <Box sx={{ marginTop: -0.75 }}>
               <Box>
-                #<b>{massroutepro[cH - 1].id}</b> Цена: <b>{massroutepro[cH - 1].price}</b>Coin
+                #<b>{massroutepro[cH - 1].id}</b> Цена:{" "}
+                <b>{massroutepro[cH - 1].price}</b>Coin
               </Box>
               <Box>
                 <b>{massroutepro[cH - 1].title}</b>
@@ -88,7 +89,7 @@ const MarketOrder = () => {
               </Grid>
             </Grid>
           </Grid>
-        </Grid>,
+        </Grid>
       );
     }
     return resStr;
@@ -97,17 +98,19 @@ const MarketOrder = () => {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box sx={{ color: '#7620A2', fontSize: 18, marginLeft: 2, height: '27px' }}>
+        <Box
+          sx={{ color: "#7620A2", fontSize: 18, marginLeft: 2, height: "27px" }}
+        >
           <b>Покупки</b>
         </Box>
       </Grid>
       {massroutepro.length === 0 ? (
-        <Box sx={{ width: '100%', color: '#7620A2', textAlign: 'center' }}>
+        <Box sx={{ width: "100%", color: "#7620A2", textAlign: "center" }}>
           <h1>Покупок пока нет</h1>
         </Box>
       ) : (
         <>
-          <Box sx={{ marginTop: -3, width: '100%' }}>
+          <Box sx={{ marginTop: -3, width: "100%" }}>
             <Box sx={styleBl1Form02(shift)}>{StrokaSpis()}</Box>
           </Box>
           {openImg && <MarketOrderView close={setOpenImg} idx={IDX} />}

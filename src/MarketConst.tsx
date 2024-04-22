@@ -36,6 +36,6 @@ export const CLINCH: Array<number> = [
   38, // Нет информации
 ];
 
-export const DOLLARS = 100; // Баланс долларов
+export const DOLLARS = 500; // Баланс долларов
 
 export const COINS = 100; // Баланс коинов

@@ -1,15 +1,16 @@
-import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { massrouteCreate } from './../../redux/actions';
+import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { massrouteCreate } from "./../../redux/actions";
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
-import MarketBasketView from './MarketBasketView';
+import MarketBasketView from "./MarketBasketView";
 
-import { styleBl1Form01, styleBl1Form02, styleBl1Form03 } from './../MarketStyle';
-import { styleBl1Form04, styleFormEnd } from './../MarketStyle';
+import { styleBl1Form01, styleBl1Form02 } from "./../MarketStyle";
+import { styleBl1Form04, styleFormEnd } from "./../MarketStyle";
+import { styleBl1Form03 } from "./../MarketStyle";
 
 const shift = 95;
 let IDX = -1;
@@ -64,13 +65,13 @@ const MarketBasket = (props: {
                   <img
                     src={massroute[cH - 1].thumbnail}
                     height={ht - 55}
-                    width={'69%'}
+                    width={"69%"}
                     alt="Pict"
                   />
                 </Box>
               </Grid>
               <Grid item xs={1} sx={{ border: 0 }}>
-                <Box sx={{ textAlign: 'right' }}>
+                <Box sx={{ textAlign: "right" }}>
                   <Button sx={styleFormEnd} onClick={() => handleDel(i, j)}>
                     🗑️
                   </Button>
@@ -79,7 +80,8 @@ const MarketBasket = (props: {
             </Grid>
             <Box sx={{ marginTop: -0.75 }} onClick={() => ClPnt(i, j)}>
               <Box>
-                #<b>{massroute[cH - 1].id}</b> Цена: <b>{massroute[cH - 1].price}</b>Coin
+                #<b>{massroute[cH - 1].id}</b> Цена:{" "}
+                <b>{massroute[cH - 1].price}</b>Coin
               </Box>
               <Box>
                 <b>{massroute[cH - 1].title}</b>
@@ -117,7 +119,7 @@ const MarketBasket = (props: {
               </Grid>
             </Grid>
           </Grid>
-        </Grid>,
+        </Grid>
       );
     }
     return resStr;
@@ -126,20 +128,28 @@ const MarketBasket = (props: {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box sx={{ color: '#7620A2', fontSize: 18, marginLeft: 2, height: '27px' }}>
+        <Box
+          sx={{ color: "#7620A2", fontSize: 18, marginLeft: 2, height: "27px" }}
+        >
           <b>Корзина</b>
         </Box>
       </Grid>
       {massroute.length === 0 ? (
-        <Box sx={{ width: '100%', color: '#7620A2', textAlign: 'center' }}>
+        <Box sx={{ width: "100%", color: "#7620A2", textAlign: "center" }}>
           <h1>Корзина пока пуста</h1>
         </Box>
       ) : (
         <>
-          <Box sx={{ marginTop: -3, width: '100%' }}>
+          <Box sx={{ marginTop: -3, width: "100%" }}>
             <Box sx={styleBl1Form02(shift)}>{StrokaSpis()}</Box>
           </Box>
-          {openImg && <MarketBasketView close={setOpenImg} idx={IDX} trigger={props.trigger} />}
+          {openImg && (
+            <MarketBasketView
+              close={setOpenImg}
+              idx={IDX}
+              trigger={props.trigger}
+            />
+          )}
         </>
       )}
     </Grid>

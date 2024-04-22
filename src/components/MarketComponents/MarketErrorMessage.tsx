@@ -5,8 +5,6 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 
-//import { styleModalEnd } from '../MainMapStyle';
-
 const MarketErrorMessage = (props: { sErr: string; setOpen: any }) => {
   const [openSet, setOpenSet] = React.useState(true);
 
@@ -17,7 +15,6 @@ const MarketErrorMessage = (props: { sErr: string; setOpen: any }) => {
     top: '50%',
     transform: 'translate(-50%, -50%)',
     width: 380,
-    //bgcolor: '#fcebfb', // бледно-розовый
     bgcolor: 'background.paper',
     border: '1px solid #fcebfb', // бледно-розовый
     borderRadius: 1,
