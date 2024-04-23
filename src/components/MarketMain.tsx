@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  //useDispatch,
-  useSelector,
-} from "react-redux";
-//import { statsaveCreate } from "../redux/actions";
-//import imageCompression from 'browser-image-compression';
+import { useSelector } from "react-redux";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -28,10 +23,6 @@ const MarketMain = (props: {}) => {
     const { statsaveReducer } = state;
     return statsaveReducer.datestat;
   });
-  // let massdk = useSelector((state: any) => {
-  //   const { massdkReducer } = state;
-  //   return massdkReducer.massdk;
-  // });
   let massroute = useSelector((state: any) => {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
@@ -41,7 +32,6 @@ const MarketMain = (props: {}) => {
     return massrouteproReducer.massroutepro;
   });
   //console.log('datestat:', datestat);
-  ////const dispatch = useDispatch();
   //===========================================================
   const [dispBlock1, setDispBlock1] = React.useState(true);
   const [dispBlock2, setDispBlock2] = React.useState(false);

@@ -1,18 +1,18 @@
 import { combineReducers } from 'redux';
 import { massdkReducer } from './massdkReducer';
 import { massrouteReducer } from './massrouteReducer';
-import { massplanReducer } from './massplanReducer';
+//import { massplanReducer } from './!massplanReducer';
 import { massrouteproReducer } from './massrouteproReducer';
-import { mapReducer } from './mapReducer';
-import { coordinatesReducer } from './coordinatesReducer';
+//import { mapReducer } from './!mapReducer';
+//import { coordinatesReducer } from './!coordinatesReducer';
 import { statsaveReducer } from './statsaveReducer';
 
 export const rootReducer = combineReducers({
-  mapReducer,
+  //mapReducer,
   massdkReducer,
   massrouteReducer,
-  massplanReducer,
+  //massplanReducer,
   massrouteproReducer,
-  coordinatesReducer,
+  //coordinatesReducer,
   statsaveReducer,
 });

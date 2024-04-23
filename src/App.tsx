@@ -1,21 +1,14 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { massdkCreate, statsaveCreate } from './redux/actions';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { massdkCreate, statsaveCreate } from "./redux/actions";
 
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 
-import axios from 'axios';
+import axios from "axios";
 
-import MarketMain from './components/MarketMain';
+import MarketMain from "./components/MarketMain";
 
-import { PlanCoord } from './interfacePlans.d';
-
-import { DOLLARS, COINS } from './MarketConst'; // Баланс долларов, коинов
-
-export let dateMapGl: any;
-export let dateRouteGl: any;
-export let dateRouteProGl: any;
-export let datePlan: any;
+import { DOLLARS, COINS } from "./MarketConst"; // Баланс долларов, коинов
 
 export interface Pointer {
   id: number;
@@ -23,29 +16,12 @@ export interface Pointer {
   price: number;
   thumbnail: string;
 }
-export let massDk: Pointer[] = [];
 
 export interface Router {
   id: number;
   title: string;
   price: number;
   thumbnail: string;
-}
-
-export interface Directions {
-  name: string; // номер направления
-  satur: number; // Насыщение(т.е./ч.)
-  intensTr: number; // Интенсивность(т.е./ч.)
-  dispers: number; // Дисперсия пачки(%)
-  peregon: number; // Длинна перегона(м)
-  wtStop: number; // Вес остановки
-  wtDelay: number; // Вес задержки
-  offsetBeginGreen: number; // Смещ.начала зелёного(сек)
-  offsetEndGreen: number; // Смещ.конца зелёного(сек)
-  intensFl: number; // Интенсивность пост.потока(т.е./ч.)
-  phases: Array<number>; // зелёные фазы для данного направления
-  edited: boolean; //
-  opponent: string; // Левый поворот конкурирует с направлением...
 }
 
 export interface Stater {
@@ -57,11 +33,9 @@ export let dateStat: Stater = {
   balans$: 0, // Баланс долларов
   balansCoin: 0, // Баланс коинов
 };
-
-export let massRoute: Router[] = [];
-export let massPlan: PlanCoord[] = [];
-export let massRoutePro: Router[] = [];
-export let Coordinates: Array<Array<number>> = []; // массив координат
+export let massDk: Pointer[] = []; // каталог
+export let massRoute: Router[] = []; // корзина
+export let massRoutePro: Router[] = []; // сделанные покупки
 
 let flagOpen = false;
 
@@ -79,17 +53,16 @@ const App = () => {
 
   if (!flagOpen) {
     let DateCarts: any = null;
-    axios.get('https://dummyjson.com/carts').then(({ data }) => {
+    axios.get("https://dummyjson.com/carts").then(({ data }) => {
       DateCarts = data;
-      console.log('!!!DateCarts:', DateCarts);
       for (let i = 0; i < DateCarts.carts.length; i++) {
         let mass = DateCarts.carts[i];
         for (let j = 0; j < mass.products.length; j++) {
           let mask: any = {
             id: 0,
-            title: '',
+            title: "",
             price: 0,
-            thumbnail: '',
+            thumbnail: "",
           };
           let have = 0;
           for (let ii = 0; ii < massDk.length; ii++) {
@@ -104,7 +77,6 @@ const App = () => {
           }
         }
       }
-      console.log('!!!massDk:', massDk);
       dispatch(massdkCreate(massdk));
       flagOpen = true;
       setTrigger(!trigger);
@@ -115,7 +87,7 @@ const App = () => {
   }
 
   return (
-    <Grid container sx={{ height: '100vh', width: '100%', bgcolor: '#E3D8F7' }}>
+    <Grid container sx={{ height: "100vh", width: "100%", bgcolor: "#E3D8F7" }}>
       <Grid item xs>
         {flagOpen && <MarketMain />}
       </Grid>
