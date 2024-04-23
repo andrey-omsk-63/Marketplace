@@ -94,7 +94,6 @@ const MarketSpisView = (props: {
       dispatch(massrouteproCreate(massroutepro));
       datestat.balansCoin = datestat.balansCoin - massdk[props.idx].price; // списание средств
       dispatch(statsaveCreate(datestat));
-      //DeleteRecInBasket();
       props.trigger();
       props.close(false);
     } else {

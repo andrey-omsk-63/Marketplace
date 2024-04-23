@@ -22,7 +22,6 @@ let HAVE = 0;
 const MarketСonversion = (props: {
   close: Function; // функция возврата в родительский компонент
   idx: number;
-  //trigger: Function; // функция для ререндера в родительском компоненте
 }) => {
   //== Piece of Redux =======================================
   let datestat = useSelector((state: any) => {

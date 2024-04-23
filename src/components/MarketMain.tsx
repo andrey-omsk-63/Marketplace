@@ -13,9 +13,6 @@ import MarketСonversion from "./MarketComponents/MarketСonversion";
 import { styleMain01, styleMain02 } from "./MarketStyle";
 
 export let ILLUM = 1; // номер активной кнопки меню
-// export let FORM3 = "0"; // какую форму Справочная информация выдать через диспетчер
-// export let FORM5 = "0"; // какую форму Ввода данных выдать через диспетчер
-// export let widthGl = window.innerWidth - 3; // ширина окна браузера
 
 const MarketMain = (props: {}) => {
   //== Piece of Redux =======================================

@@ -12,7 +12,6 @@ import { styleWVI03 } from "./../MarketStyle";
 const MarketOrderView = (props: {
   close: Function; // функция возврата в родительский компонент
   idx: number;
-  //trigger: Function; // функция для ререндера в родительском компоненте
 }) => {
   //== Piece of Redux =======================================
   let massroutepro = useSelector((state: any) => {

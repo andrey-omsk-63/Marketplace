@@ -24,7 +24,6 @@ const MarketBasket = (props: {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
   });
-  //console.log('MASSDK:', massdk);
   const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
@@ -37,7 +36,6 @@ const MarketBasket = (props: {
 
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
-    //console.log('Click:', IDX, massroute[IDX].id);
     setOpenImg(true);
   };
 
