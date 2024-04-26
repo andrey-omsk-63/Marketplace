@@ -185,7 +185,7 @@ export const styleConv00 = {
 };
 
 export const styleConv01 = {
-  width: "48px",
+  width: "28px",
   maxHeight: "24px",
   minHeight: "24px",
 };
