@@ -92,7 +92,7 @@ const MarketSpisView = (props: {
       let rec = massdk[props.idx];
       massroutepro.push(rec); // запись в зaказы
       dispatch(massrouteproCreate(massroutepro));
-      datestat.balansCoin = datestat.balansCoin - massdk[props.idx].price; // списание средств
+      datestat.balansCoin = (datestat.balansCoin - massdk[props.idx].price).toFixed(2); // списание средств
       dispatch(statsaveCreate(datestat));
       props.trigger();
       props.close(false);

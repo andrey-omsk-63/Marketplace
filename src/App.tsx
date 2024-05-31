@@ -30,8 +30,8 @@ export interface Stater {
 }
 
 export let dateStat: Stater = {
-  balans$: 0, // Баланс долларов
-  balansCoin: 0, // Баланс коинов
+  balans$: 0.00, // Баланс долларов
+  balansCoin: 0.00, // Баланс коинов
 };
 export let massDk: Pointer[] = []; // каталог
 export let massRoute: Router[] = []; // корзина
