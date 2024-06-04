@@ -89,7 +89,7 @@ const MarketСonversion = (props: {
       if (valueInp <= datestat.balans$) {
         dollar = Number(datestat.balans$) - Number(valueInp);
         coin = Number(datestat.balansCoin) + Number(valueInp)
-        console.log('###:',valueInp,dollar,datestat.balansCoin,coin)
+        //console.log('###:',valueInp,dollar,datestat.balansCoin,coin)
         //coin = coin.toFixed(2);
         //dollar = Number(dollar).toFixed(2);
         HAVE++;
