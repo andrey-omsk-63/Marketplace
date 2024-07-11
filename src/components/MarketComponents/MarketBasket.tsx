@@ -15,6 +15,7 @@ import { styleBl1Form03 } from "./../MarketStyle";
 const shift = 95;
 let IDX = -1;
 let ht = 0;
+let IdxColor = -1;
 
 const MarketBasket = (props: {
   trigger: Function; // функция для ререндера в родительском компоненте
@@ -27,6 +28,7 @@ const MarketBasket = (props: {
   const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
+  const [trigger, setTrigger] = React.useState(false);
 
   let cH = 0;
   let kolStr = Math.floor(massroute.length / 5);
@@ -37,6 +39,15 @@ const MarketBasket = (props: {
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
     setOpenImg(true);
+  };
+
+  const СhangeColor = (str: number, pnkt: number) => {
+    if (str < 0) {
+      IdxColor = -1;
+    } else {
+      IdxColor = str * 5 + pnkt;
+    }
+    setTrigger(!trigger);
   };
 
   const handleDel = (str: number, pnkt: number) => {
@@ -52,11 +63,11 @@ const MarketBasket = (props: {
 
   const PunktSpis = (i: number, j: number) => {
     cH++;
+    let color = cH - 1 === IdxColor ? 1 : 0;
     return (
       <>
         {cH <= massroute.length && (
-          <Box sx={styleBl1Form04(ht)}>
-            {/*  */}
+          <Box sx={styleBl1Form04(ht, color)}>
             <Grid container>
               <Grid item xs={11} onClick={() => ClPnt(i, j)}>
                 <Box sx={{ height: ht - 45 }}>
@@ -100,19 +111,37 @@ const MarketBasket = (props: {
         <Grid key={i} container>
           <Grid item xs={12} sx={{ height: ht }}>
             <Grid key={i * i} container>
-              <Grid item xs={2.4} sx={stl103(ht)}>
+              <Grid
+                item
+                xs={2.4}
+                sx={stl103(ht)}
+                onMouseEnter={() => СhangeColor(i, 0)}
+                onMouseLeave={() => СhangeColor(-1, 0)}
+              >
                 {PunktSpis(i, 0)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}>
+              <Grid item xs={2.4} sx={stl103(ht)}
+               onMouseEnter={() => СhangeColor(i, 1)}
+               onMouseLeave={() => СhangeColor(-1, 0)}
+              >
                 {PunktSpis(i, 1)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}>
+              <Grid item xs={2.4} sx={stl103(ht)}
+               onMouseEnter={() => СhangeColor(i, 2)}
+               onMouseLeave={() => СhangeColor(-1, 0)}
+              >
                 {PunktSpis(i, 2)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}>
+              <Grid item xs={2.4} sx={stl103(ht)}
+               onMouseEnter={() => СhangeColor(i, 3)}
+               onMouseLeave={() => СhangeColor(-1, 0)}
+              >
                 {PunktSpis(i, 3)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}>
+              <Grid item xs={2.4} sx={stl103(ht)}
+               onMouseEnter={() => СhangeColor(i, 4)}
+               onMouseLeave={() => СhangeColor(-1, 0)}
+              >
                 {PunktSpis(i, 4)}
               </Grid>
             </Grid>

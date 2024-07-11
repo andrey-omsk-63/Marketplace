@@ -14,6 +14,7 @@ const shift = 95;
 let IDX = -1;
 let cH = 0;
 let ht = 0;
+let IdxColor = -1;
 
 const MarketSpis = (props: {
   trigger: Function; // функция для ререндера в родительском компоненте
@@ -25,6 +26,7 @@ const MarketSpis = (props: {
   });
   //===========================================================
   const [openImg, setOpenImg] = React.useState(false);
+  const [trigger, setTrigger] = React.useState(false);
 
   let kolStr = Math.floor(massdk.length / 5);
   if (massdk.length / 5 > kolStr) kolStr++;
@@ -33,16 +35,25 @@ const MarketSpis = (props: {
 
   const ClPnt = (str: number, pnkt: number) => {
     IDX = str * 5 + pnkt;
-
     setOpenImg(true);
+  };
+
+  const СhangeColor = (str: number, pnkt: number) => {
+    if (str < 0) {
+      IdxColor = -1;
+    } else {
+      IdxColor = str * 5 + pnkt;
+    }
+    setTrigger(!trigger);
   };
 
   const PunktSpis = () => {
     cH++;
+    let color = cH - 1 === IdxColor ? 1 : 0;
     return (
       <>
         {cH <= massdk.length && (
-          <Box sx={styleBl1Form04(ht)}>
+          <Box sx={styleBl1Form04(ht, color)}>
             <Box sx={{ height: ht - 45 }}>
               <img
                 src={massdk[cH - 1].thumbnail}
@@ -70,26 +81,32 @@ const MarketSpis = (props: {
     let resStr = [];
     ht = (window.innerHeight - shift) / 4;
     cH = 0;
+
+    const OutputCard = (i: number, column: number) => {
+      return (
+        <Grid
+          item
+          xs={2.4}
+          sx={stl103(ht)}
+          onMouseEnter={() => СhangeColor(i, column)}
+          onMouseLeave={() => СhangeColor(-1, column)}
+          onClick={() => ClPnt(i, column)}
+        >
+          {PunktSpis()}
+        </Grid>
+      );
+    };
+
     for (let i = 0; i < kolStr; i++) {
       resStr.push(
         <Grid key={i} container>
           <Grid item xs={12} sx={{ height: ht }}>
             <Grid key={i * i} container>
-              <Grid item xs={2.4} sx={stl103(ht)} onClick={() => ClPnt(i, 0)}>
-                {PunktSpis()}
-              </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)} onClick={() => ClPnt(i, 1)}>
-                {PunktSpis()}
-              </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)} onClick={() => ClPnt(i, 2)}>
-                {PunktSpis()}
-              </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)} onClick={() => ClPnt(i, 3)}>
-                {PunktSpis()}
-              </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)} onClick={() => ClPnt(i, 4)}>
-                {PunktSpis()}
-              </Grid>
+              {OutputCard(i, 0)}
+              {OutputCard(i, 1)}
+              {OutputCard(i, 2)}
+              {OutputCard(i, 3)}
+              {OutputCard(i, 4)}
             </Grid>
           </Grid>
         </Grid>
