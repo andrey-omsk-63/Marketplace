@@ -92,7 +92,9 @@ const MarketSpisView = (props: {
       let rec = massdk[props.idx];
       massroutepro.push(rec); // запись в зaказы
       dispatch(massrouteproCreate(massroutepro));
-      datestat.balansCoin = (datestat.balansCoin - massdk[props.idx].price).toFixed(2); // списание средств
+      datestat.balansCoin = (
+        datestat.balansCoin - massdk[props.idx].price
+      ).toFixed(2); // списание средств
       dispatch(statsaveCreate(datestat));
       props.trigger();
       props.close(false);
@@ -125,7 +127,11 @@ const MarketSpisView = (props: {
               <b>
                 <em>Описание:</em>
               </b>
+              <Box sx={{ fontSize: 12.9, color: "black", marginTop: '5px' }}>
+                Очень нужная в хозяйстве вещь
+              </Box>
             </Box>
+
             <Button sx={styleWVI02} onClick={() => ClickBasket()}>
               Добавить в корзину
             </Button>

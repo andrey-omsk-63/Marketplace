@@ -30,8 +30,8 @@ export interface Stater {
 }
 
 export let dateStat: Stater = {
-  balans$: 0.00, // Баланс долларов
-  balansCoin: 0.00, // Баланс коинов
+  balans$: 0.0, // Баланс долларов
+  balansCoin: 0.0, // Баланс коинов
 };
 export let massDk: Pointer[] = []; // каталог
 export let massRoute: Router[] = []; // корзина
@@ -77,6 +77,10 @@ const App = () => {
           }
         }
       }
+
+      const key = "id"; // ключ, по которому будем сортировать
+      massDk.sort((user1, user2) => (user1[key] > user2[key] ? 1 : -1));
+
       dispatch(massdkCreate(massdk));
       flagOpen = true;
       setTrigger(!trigger);

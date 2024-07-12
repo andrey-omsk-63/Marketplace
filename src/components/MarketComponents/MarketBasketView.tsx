@@ -122,6 +122,9 @@ const MarketBasketView = (props: {
               <b>
                 <em>Описание:</em>
               </b>
+              <Box sx={{ fontSize: 12.9, color: "black", marginTop: '5px' }}>
+                Очень нужная в хозяйстве вещь
+              </Box>
             </Box>
             <Button sx={styleWVI02} onClick={() => ClickOrder()}>
               Оформить товар

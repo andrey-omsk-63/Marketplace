@@ -75,6 +75,9 @@ const MarketOrderView = (props: {
               <b>
                 <em>Описание:</em>
               </b>
+              <Box sx={{ fontSize: 12.9, color: "black", marginTop: '5px' }}>
+                Очень нужная в хозяйстве вещь
+              </Box>
             </Box>
             <Box>Срок доставки 3 дня</Box>
           </Grid>

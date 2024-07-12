@@ -142,7 +142,7 @@ const MarketСonversion = (props: {
   let coob1 = HAVE ? "На вашем балансе станет: " : "Сейчас на вашем балансе: ";
 
   return (
-    <Modal open={openImg} onClose={CloseEndGl} hideBackdrop={false}>
+    <Modal open={openImg} onClose={CloseEndGl} hideBackdrop={true}>
       <Box sx={styleConv00}>
         <Button sx={styleModalEnd} onClick={() => handleClose()}>
           <b>&#10006;</b>
