@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { BsCart3, BsFillLuggageFill } from "react-icons/bs";
+import { BsListColumnsReverse } from "react-icons/bs";
+import { BiTransfer } from "react-icons/bi";
 
 import MarketSpis from "./MarketComponents/MarketSpis";
 import MarketBasket from "./MarketComponents/MarketBasket";
@@ -96,18 +99,19 @@ const MarketMain = (props: {}) => {
     return (
       <Grid item xs={1.5}>
         <Button sx={styleMain02(1.5, ILLUM, 1)} onClick={() => ClickKnop1()}>
-          📝Каталог
+          {/* 📝Каталог */}
+          <BsListColumnsReverse /> &nbsp; Каталог
         </Button>
       </Grid>
     );
   };
-  //🧾
 
   const actionKnopOrder = () => {
     return (
       <Grid item xs={1.5}>
         <Button sx={styleMain02(1.5, ILLUM, 3)} onClick={() => ClickKnop3()}>
-          📦Заказы
+          {/* 📦Заказы */}
+          <BsFillLuggageFill /> &nbsp; Заказы
           {massroutepro.length > 0 && (
             <Box>
               {" ("}
@@ -124,7 +128,8 @@ const MarketMain = (props: {}) => {
     return (
       <Grid item xs={1.5}>
         <Button sx={styleMain02(1.5, ILLUM, 2)} onClick={() => ClickKnop2()}>
-          🛒Корзина{" "}
+          {/* 🛒Корзина{" "} */}
+          <BsCart3 /> &nbsp; Корзина
           {massroute.length > 0 && (
             <Box>
               {" ("}
@@ -143,7 +148,7 @@ const MarketMain = (props: {}) => {
     return (
       <Grid item xs={2.0}>
         <Button sx={styleMain02(2.0, ILLUM, 4)} onClick={() => ClickKnop4()}>
-          {soob1}
+          <BiTransfer /> &nbsp; {soob1}
         </Button>
       </Grid>
     );

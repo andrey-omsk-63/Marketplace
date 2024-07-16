@@ -15,8 +15,8 @@ import { styleConv02, styleConv03, styleConv04 } from "./../MarketStyle";
 import { styleConv05 } from "./../MarketStyle";
 
 let oldIdx = -1;
-let coin = -1.00;
-let dollar = -1.00;
+let coin = -1.0;
+let dollar = -1.0;
 let HAVE = 0;
 
 const MarketСonversion = (props: {
@@ -88,7 +88,7 @@ const MarketСonversion = (props: {
       valueInp = Math.trunc(Number(valueInp));
       if (valueInp <= datestat.balans$) {
         dollar = Number(datestat.balans$) - Number(valueInp);
-        coin = Number(datestat.balansCoin) + Number(valueInp)
+        coin = Number(datestat.balansCoin) + Number(valueInp);
         //console.log('###:',valueInp,dollar,datestat.balansCoin,coin)
         //coin = coin.toFixed(2);
         //dollar = Number(dollar).toFixed(2);
@@ -104,12 +104,13 @@ const MarketСonversion = (props: {
             size="small"
             onKeyPress={handleKey} //отключение Enter
             type="number"
-            InputProps={{
-              disableUnderline: true,
+            InputProps={{ disableUnderline: true }}
+            inputProps={{
               style: {
-                fontSize: 13.6,
+                cursor: "pointer",
                 backgroundColor: "#FFFBE5",
                 padding: "3px 0px 0px 0px",
+                fontSize: 13.6,
               },
             }}
             value={value}

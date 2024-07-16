@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import { BiSolidTrash } from "react-icons/bi";
 
 import MarketErrorMessage from './MarketErrorMessage';
 
@@ -130,7 +131,8 @@ const MarketBasketView = (props: {
               Оформить товар
             </Button>
             <Button sx={styleWVI022} onClick={() => ClickDel()}>
-              🗑️ Удалить товар
+              {/* 🗑️ Удалить товар */}
+              <BiSolidTrash /> &nbsp; Удалить товар
             </Button>
           </Grid>
         </Grid>

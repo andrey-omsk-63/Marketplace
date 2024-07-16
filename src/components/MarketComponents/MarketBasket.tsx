@@ -4,13 +4,12 @@ import { massrouteCreate } from "./../../redux/actions";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import { BiSolidTrash } from "react-icons/bi";
 
 import MarketBasketView from "./MarketBasketView";
 
 import { styleBl1Form01, styleBl1Form02 } from "./../MarketStyle";
-import { styleBl1Form04, styleFormEnd } from "./../MarketStyle";
-import { styleBl1Form03 } from "./../MarketStyle";
+import { styleBl1Form03, styleBl1Form04 } from "./../MarketStyle";
 
 const shift = 95;
 let IDX = -1;
@@ -80,10 +79,14 @@ const MarketBasket = (props: {
                 </Box>
               </Grid>
               <Grid item xs={1} sx={{ border: 0 }}>
-                <Box sx={{ textAlign: "right" }}>
-                  <Button sx={styleFormEnd} onClick={() => handleDel(i, j)}>
+                <Box
+                  sx={{ textAlign: "right", fontSize: 16 }}
+                  onClick={() => handleDel(i, j)}
+                >
+                  <BiSolidTrash />
+                  {/* <Button sx={styleFormEnd} onClick={() => handleDel(i, j)}>
                     🗑️
-                  </Button>
+                  </Button> */}
                 </Box>
               </Grid>
             </Grid>
@@ -120,27 +123,39 @@ const MarketBasket = (props: {
               >
                 {PunktSpis(i, 0)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}
-               onMouseEnter={() => СhangeColor(i, 1)}
-               onMouseLeave={() => СhangeColor(-1, 0)}
+              <Grid
+                item
+                xs={2.4}
+                sx={stl103(ht)}
+                onMouseEnter={() => СhangeColor(i, 1)}
+                onMouseLeave={() => СhangeColor(-1, 0)}
               >
                 {PunktSpis(i, 1)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}
-               onMouseEnter={() => СhangeColor(i, 2)}
-               onMouseLeave={() => СhangeColor(-1, 0)}
+              <Grid
+                item
+                xs={2.4}
+                sx={stl103(ht)}
+                onMouseEnter={() => СhangeColor(i, 2)}
+                onMouseLeave={() => СhangeColor(-1, 0)}
               >
                 {PunktSpis(i, 2)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}
-               onMouseEnter={() => СhangeColor(i, 3)}
-               onMouseLeave={() => СhangeColor(-1, 0)}
+              <Grid
+                item
+                xs={2.4}
+                sx={stl103(ht)}
+                onMouseEnter={() => СhangeColor(i, 3)}
+                onMouseLeave={() => СhangeColor(-1, 0)}
               >
                 {PunktSpis(i, 3)}
               </Grid>
-              <Grid item xs={2.4} sx={stl103(ht)}
-               onMouseEnter={() => СhangeColor(i, 4)}
-               onMouseLeave={() => СhangeColor(-1, 0)}
+              <Grid
+                item
+                xs={2.4}
+                sx={stl103(ht)}
+                onMouseEnter={() => СhangeColor(i, 4)}
+                onMouseLeave={() => СhangeColor(-1, 0)}
               >
                 {PunktSpis(i, 4)}
               </Grid>
