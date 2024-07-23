@@ -22,6 +22,7 @@ let HAVE = 0;
 const MarketСonversion = (props: {
   close: Function; // функция возврата в родительский компонент
   idx: number;
+  //refind: Function; // возврат в нужное место в гл.часть
 }) => {
   //== Piece of Redux =======================================
   let datestat = useSelector((state: any) => {
@@ -42,7 +43,8 @@ const MarketСonversion = (props: {
   }
   //========================================================
   const CloseEnd = React.useCallback(() => {
-    props.close(null);
+    props.close(false);
+    //props.refind()
   }, [props]);
 
   //=== обработка Esc ======================================
@@ -65,6 +67,7 @@ const MarketСonversion = (props: {
   const handleClose = () => {
     setOpenImg(false);
     props.close(false);
+    //props.refind()
   };
 
   const CloseEndGl = (event: any, reason: string) => {
@@ -143,7 +146,7 @@ const MarketСonversion = (props: {
   let coob1 = HAVE ? "На вашем балансе станет: " : "Сейчас на вашем балансе: ";
 
   return (
-    <Modal open={openImg} onClose={CloseEndGl} hideBackdrop={true}>
+    <Modal open={openImg} onClose={CloseEndGl} hideBackdrop={false}>
       <Box sx={styleConv00}>
         <Button sx={styleModalEnd} onClick={() => handleClose()}>
           <b>&#10006;</b>

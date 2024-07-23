@@ -15,7 +15,8 @@ import MarketСonversion from "./MarketComponents/MarketСonversion";
 
 import { styleMain01, styleMain02 } from "./MarketStyle";
 
-export let ILLUM = 1; // номер активной кнопки меню
+export let ILLUM = 1; // номер активной кнопки
+//let nomInMenu = 1; // номер позиции в главном меню
 
 const MarketMain = (props: {}) => {
   //== Piece of Redux =======================================
@@ -66,34 +67,52 @@ const MarketMain = (props: {}) => {
     setDispBlock4(false);
   };
 
-  const Turn04 = () => {
-    setDispBlock1(false);
-    setDispBlock2(false);
-    setDispBlock3(false);
-  };
+  // const Turn04 = () => {
+  //   setDispBlock1(false);
+  //   setDispBlock2(false);
+  //   setDispBlock3(false);
+  // };
   //=== Функции - обработчики ==============================
   const ClickKnop1 = () => {
-    ILLUM = 1;
+    //nomInMenu = ILLUM = 1;
     Turn01();
     setDispBlock1(true);
   };
 
   const ClickKnop2 = () => {
-    ILLUM = 2;
+    //nomInMenu = ILLUM = 2;
     Turn02();
     setDispBlock2(true);
   };
   const ClickKnop3 = () => {
-    ILLUM = 3;
+    //nomInMenu = ILLUM = 3;
     Turn03();
     setDispBlock3(true);
   };
 
   const ClickKnop4 = () => {
     ILLUM = 4;
-    Turn04();
+    //Turn04();
     setDispBlock4(true);
   };
+
+  const SetTrigger = () => {
+    setTrigger(!trigger);
+  };
+
+  //const Rollback = () => {
+  // switch (nomInMenu) {
+  //   case 1:
+  //     ClickKnop1();
+  //     break;
+  //   case 2:
+  //     ClickKnop2();
+  //     break;
+  //   case 3:
+  //     ClickKnop3();
+  // }
+  //};
+
   //=== Компоненты =========================================
   const actionKnopSpis = () => {
     return (
@@ -146,25 +165,21 @@ const MarketMain = (props: {}) => {
     let soob1 =
       "Ваш баланс: " + datestat.balansCoin + "Coin и " + datestat.balans$ + "$";
     return (
-      <Grid item xs={2.0}>
-        <Button sx={styleMain02(2.0, ILLUM, 4)} onClick={() => ClickKnop4()}>
+      <Grid item xs={2.4}>
+        <Button sx={styleMain02(2.4, ILLUM, 4)} onClick={() => ClickKnop4()}>
           <BiTransfer /> &nbsp; {soob1}
         </Button>
       </Grid>
     );
   };
 
-  const SetTrigger = () => {
-    setTrigger(!trigger);
-  };
-
   return (
     <Grid container sx={styleMain01}>
-      <Grid item xs={12} sx={{ height: "30px" }}>
+      <Grid item xs={12} sx={{}}>
         <Grid container sx={{ height: "30px", fontSize: 12.9 }}>
           {/* Каталог */}
           {actionKnopSpis()}
-          <Grid item xs={5.5}></Grid>
+          <Grid item xs={5.1}></Grid>
           {/* Заказы */}
           {actionKnopOrder()}
           {/* Корзина */}
@@ -177,7 +192,11 @@ const MarketMain = (props: {}) => {
       {dispBlock2 && <MarketBasket trigger={SetTrigger} />}
       {dispBlock3 && <MarketOrder />}
       {dispBlock4 && (
-        <MarketСonversion close={setDispBlock4} idx={RandomNumber(1, 10000)} />
+        <MarketСonversion
+          close={setDispBlock4}
+          idx={RandomNumber(1, 10000)}
+          //refind={Rollback}
+        />
       )}
     </Grid>
   );
