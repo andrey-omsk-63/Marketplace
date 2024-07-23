@@ -51,9 +51,6 @@ export const styleMain03 = {
 //=== MarketSpis ======================================================
 export const styleBl1Form01 = (part: number) => {
   const styleBl3Form = {
-    //bgcolor: 'background.paper',
-    //border: '1px solid #FFFFFF',
-    //borderRadius: 1,
     margin: "5px 2px 0px 1px",
     height: window.innerHeight - part,
     width: "100%",
@@ -63,8 +60,6 @@ export const styleBl1Form01 = (part: number) => {
 
 export const styleBl1Form02 = (part: number) => {
   const styleBl3Form = {
-    //bgcolor: "background.paper",
-    //border: '1px solid #d4d4d4', // серый
     borderRadius: 1,
     height: window.innerHeight - part,
     overflowX: "auto", // скролл
@@ -74,17 +69,12 @@ export const styleBl1Form02 = (part: number) => {
 
 export const styleBl1Form03 = (hght: number) => {
   const styleBl1Form = {
-    //border: 1,
-    //bgcolor: "#F1F5FB",
     height: hght,
-    //padding: "15px 15px 15px 15px",
-    //margin: "0px 5px 0px 5px",
   };
   return styleBl1Form;
 };
 
 export const styleBl1Form04 = (hght: number, color: number) => {
-  //let col = !color ? "#F1F5FB" : "#D0DEF2";
   let col = !color ? "#F1F5FB" : "#DFE9F7";
   const styleBl104 = {
     fontSize: 11.8,
@@ -230,4 +220,4 @@ export const styleConv05 = {
   textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
   color: "#5B1080", // сиреневый
 };
-//=== InputAdress =====================================================
+
