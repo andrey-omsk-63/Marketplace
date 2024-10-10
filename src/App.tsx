@@ -65,9 +65,8 @@ const App = () => {
             thumbnail: "",
           };
           let have = 0;
-          for (let ii = 0; ii < massDk.length; ii++) {
+          for (let ii = 0; ii < massDk.length; ii++)
             if (massDk[ii].id === mass.products[j].id) have++; // дубликат
-          }
           if (!have) {
             mask.id = mass.products[j].id;
             mask.title = mass.products[j].title;
@@ -78,8 +77,8 @@ const App = () => {
         }
       }
 
-      const key = "id"; // ключ, по которому будем сортировать
-      massDk.sort((user1, user2) => (user1[key] > user2[key] ? 1 : -1));
+      // "id" - ключ, по которому будем сортировать
+      massDk.sort((user1, user2) => (user1["id"] > user2["id"] ? 1 : -1));
 
       dispatch(massdkCreate(massdk));
       flagOpen = true;

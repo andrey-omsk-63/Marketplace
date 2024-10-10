@@ -10,6 +10,7 @@ import MarketBasketView from "./MarketBasketView";
 
 import { styleBl1Form01, styleBl1Form02 } from "./../MarketStyle";
 import { styleBl1Form03, styleBl1Form04 } from "./../MarketStyle";
+import { styleBl1Form05 } from "./../MarketStyle";
 
 const shift = 95;
 let IDX = -1;
@@ -43,18 +44,15 @@ const MarketBasket = (props: {
   const СhangeColor = (str: number, pnkt: number) => {
     if (str < 0) {
       IdxColor = -1;
-    } else {
-      IdxColor = str * 5 + pnkt;
-    }
+    } else IdxColor = str * 5 + pnkt;
     setTrigger(!trigger);
   };
 
   const handleDel = (str: number, pnkt: number) => {
     let idx = str * 5 + pnkt;
     let massRab = [];
-    for (let i = 0; i < massroute.length; i++) {
+    for (let i = 0; i < massroute.length; i++)
       if (i !== idx) massRab.push({ ...massroute[i] });
-    }
     massroute = [];
     massroute = massRab;
     dispatch(massrouteCreate(massroute));
@@ -78,7 +76,7 @@ const MarketBasket = (props: {
                   />
                 </Box>
               </Grid>
-              <Grid item xs={1} sx={{ border: 0 }}>
+              <Grid item xs={1}>
                 <Box
                   sx={{ textAlign: "right", fontSize: 16 }}
                   onClick={() => handleDel(i, j)}
@@ -170,9 +168,7 @@ const MarketBasket = (props: {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box
-          sx={{ color: "#7620A2", fontSize: 18, marginLeft: 2, height: "27px" }}
-        >
+        <Box sx={styleBl1Form05}>
           <b>Корзина</b>
         </Box>
       </Grid>

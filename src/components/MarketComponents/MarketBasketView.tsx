@@ -108,7 +108,7 @@ const MarketBasketView = (props: {
           <b>&#10006;</b>
         </Button>
         <Grid container>
-          <Grid item xs={8} sx={{ border: 0 }}>
+          <Grid item xs={8}>
             <Box sx={styleWVI01}>
               <img
                 src={massroute[props.idx].thumbnail}
@@ -118,7 +118,7 @@ const MarketBasketView = (props: {
               />
             </Box>
           </Grid>
-          <Grid item xs={4} sx={{ border: 0 }}>
+          <Grid item xs={4}>
             <Box sx={styleWVI03}>
               <b>
                 <em>Описание:</em>

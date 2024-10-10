@@ -9,6 +9,7 @@ import MarketOrderView from "./MarketOrderView";
 
 import { styleBl1Form01, styleBl1Form02 } from "./../MarketStyle";
 import { styleBl1Form03, styleBl1Form04 } from "./../MarketStyle";
+import { styleBl1Form05 } from "./../MarketStyle";
 
 const shift = 95;
 let IDX = -1;
@@ -39,9 +40,7 @@ const MarketOrder = () => {
   const СhangeColor = (str: number, pnkt: number) => {
     if (str < 0) {
       IdxColor = -1;
-    } else {
-      IdxColor = str * 5 + pnkt;
-    }
+    } else IdxColor = str * 5 + pnkt;
     setTrigger(!trigger);
   };
 
@@ -99,8 +98,8 @@ const MarketOrder = () => {
       resStr.push(
         <Grid key={i} container>
           <Grid item xs={12} sx={{ height: ht }}>
-            <Grid key={i * i} container>
-            {OutputCard(i, 0)}
+            <Grid container>
+              {OutputCard(i, 0)}
               {OutputCard(i, 1)}
               {OutputCard(i, 2)}
               {OutputCard(i, 3)}
@@ -116,9 +115,7 @@ const MarketOrder = () => {
   return (
     <Grid container sx={styleBl1Form01(40)}>
       <Grid item xs={12}>
-        <Box
-          sx={{ color: "#7620A2", fontSize: 18, marginLeft: 2, height: "27px" }}
-        >
+        <Box sx={styleBl1Form05}>
           <b>Покупки</b>
         </Box>
       </Grid>

@@ -8,8 +8,6 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
 
-//import { ReplaceInSvg } from "../../MapServiceFunctions";
-
 import { styleModalEnd, styleConv00, styleConv01 } from "./../MarketStyle";
 import { styleConv02, styleConv03, styleConv04 } from "./../MarketStyle";
 import { styleConv05 } from "./../MarketStyle";
@@ -22,7 +20,6 @@ let HAVE = 0;
 const MarketСonversion = (props: {
   close: Function; // функция возврата в родительский компонент
   idx: number;
-  //refind: Function; // возврат в нужное место в гл.часть
 }) => {
   //== Piece of Redux =======================================
   let datestat = useSelector((state: any) => {
@@ -44,7 +41,6 @@ const MarketСonversion = (props: {
   //========================================================
   const CloseEnd = React.useCallback(() => {
     props.close(false);
-    //props.refind()
   }, [props]);
 
   //=== обработка Esc ======================================
@@ -67,7 +63,6 @@ const MarketСonversion = (props: {
   const handleClose = () => {
     setOpenImg(false);
     props.close(false);
-    //props.refind()
   };
 
   const CloseEndGl = (event: any, reason: string) => {
@@ -162,10 +157,10 @@ const MarketСonversion = (props: {
             <Box sx={{ fontSize: 19, marginTop: 2 }}>
               Вы можете проконвертировать от 1 до {datestat.balans$} $
             </Box>
-            <Box sx={{ border: 0, fontSize: 19, marginTop: 2 }}>
+            <Box sx={{ fontSize: 19, marginTop: 2 }}>
               <Grid container>
                 <Grid item xs={3.4}></Grid>
-                <Grid item xs sx={{ border: 0, height: "24px" }}>
+                <Grid item xs sx={{ height: "24px" }}>
                   {DollarInput()}
                   <Box sx={styleConv03}>$ ➯ {coin}Coin (итого)</Box>
                 </Grid>

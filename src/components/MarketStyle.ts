@@ -88,6 +88,13 @@ export const styleBl1Form04 = (hght: number, color: number) => {
   };
   return styleBl104;
 };
+
+export const styleBl1Form05 = {
+  color: "#7620A2",
+  fontSize: 18,
+  marginLeft: 2,
+  height: "27px",
+};
 //=== MarketSpisView ==================================================
 export const styleWVI00 = {
   fontSize: 19.0,
@@ -108,11 +115,11 @@ export const styleWVI00 = {
 };
 
 export const styleWVI01 = {
-  border: "1px solid #d4d4d4",
   marginTop: 1,
-  bgcolor: "#F1F5FB",
+  bgcolor: "#F1F5FB", // серый
   height: window.innerHeight * 0.8 + 9,
   width: "100%",
+  border: "1px solid #d4d4d4",
   borderRadius: 1,
   overflowX: "auto",
   boxShadow: 6,
@@ -212,12 +219,10 @@ export const styleConv05 = {
   maxHeight: "30px",
   minHeight: "30px",
   bgcolor: "#E6F5D6", // светло салатовый
-  border: "1px solid #000",
+  border: "1px solid #d4d4d4", // серый
   borderRadius: 1,
-  borderColor: "#d4d4d4", // серый
   textTransform: "unset !important",
   boxShadow: 6,
   textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
   color: "#5B1080", // сиреневый
 };
-

@@ -25,22 +25,18 @@ const MarketSpisView = (props: {
     const { massdkReducer } = state;
     return massdkReducer.massdk;
   });
-
   let massroute = useSelector((state: any) => {
     const { massrouteReducer } = state;
     return massrouteReducer.massroute;
   });
-
   let massroutepro = useSelector((state: any) => {
     const { massrouteproReducer } = state;
     return massrouteproReducer.massroutepro;
   });
-
   let datestat = useSelector((state: any) => {
     const { statsaveReducer } = state;
     return statsaveReducer.datestat;
   });
-  //console.log('massroute:', massroute);
   const dispatch = useDispatch();
   //===========================================================
   const [openImg, setOpenImg] = React.useState(true);
@@ -112,7 +108,7 @@ const MarketSpisView = (props: {
           <b>&#10006;</b>
         </Button>
         <Grid container>
-          <Grid item xs={8} sx={{ border: 0 }}>
+          <Grid item xs={8}>
             <Box sx={styleWVI01}>
               <img
                 src={massdk[props.idx].thumbnail}
@@ -122,12 +118,12 @@ const MarketSpisView = (props: {
               />
             </Box>
           </Grid>
-          <Grid item xs={4} sx={{ border: 0 }}>
+          <Grid item xs={4}>
             <Box sx={styleWVI03}>
               <b>
                 <em>Описание:</em>
               </b>
-              <Box sx={{ fontSize: 12.9, color: "black", marginTop: '5px' }}>
+              <Box sx={{ fontSize: 12.9, color: "black", marginTop: "5px" }}>
                 Очень нужная в хозяйстве вещь
               </Box>
             </Box>

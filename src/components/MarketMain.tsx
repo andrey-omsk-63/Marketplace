@@ -16,7 +16,6 @@ import MarketСonversion from "./MarketComponents/MarketСonversion";
 import { styleMain01, styleMain02 } from "./MarketStyle";
 
 export let ILLUM = 1; // номер активной кнопки
-//let nomInMenu = 1; // номер позиции в главном меню
 
 const MarketMain = (props: {}) => {
   //== Piece of Redux =======================================
@@ -32,7 +31,6 @@ const MarketMain = (props: {}) => {
     const { massrouteproReducer } = state;
     return massrouteproReducer.massroutepro;
   });
-  //console.log('datestat:', datestat);
   //===========================================================
   const [dispBlock1, setDispBlock1] = React.useState(true);
   const [dispBlock2, setDispBlock2] = React.useState(false);
@@ -66,53 +64,29 @@ const MarketMain = (props: {}) => {
     setDispBlock2(false);
     setDispBlock4(false);
   };
-
-  // const Turn04 = () => {
-  //   setDispBlock1(false);
-  //   setDispBlock2(false);
-  //   setDispBlock3(false);
-  // };
   //=== Функции - обработчики ==============================
   const ClickKnop1 = () => {
-    //nomInMenu = ILLUM = 1;
     Turn01();
     setDispBlock1(true);
   };
 
   const ClickKnop2 = () => {
-    //nomInMenu = ILLUM = 2;
     Turn02();
     setDispBlock2(true);
   };
   const ClickKnop3 = () => {
-    //nomInMenu = ILLUM = 3;
     Turn03();
     setDispBlock3(true);
   };
 
   const ClickKnop4 = () => {
     ILLUM = 4;
-    //Turn04();
     setDispBlock4(true);
   };
 
   const SetTrigger = () => {
     setTrigger(!trigger);
   };
-
-  //const Rollback = () => {
-  // switch (nomInMenu) {
-  //   case 1:
-  //     ClickKnop1();
-  //     break;
-  //   case 2:
-  //     ClickKnop2();
-  //     break;
-  //   case 3:
-  //     ClickKnop3();
-  // }
-  //};
-
   //=== Компоненты =========================================
   const actionKnopSpis = () => {
     return (
@@ -192,11 +166,7 @@ const MarketMain = (props: {}) => {
       {dispBlock2 && <MarketBasket trigger={SetTrigger} />}
       {dispBlock3 && <MarketOrder />}
       {dispBlock4 && (
-        <MarketСonversion
-          close={setDispBlock4}
-          idx={RandomNumber(1, 10000)}
-          //refind={Rollback}
-        />
+        <MarketСonversion close={setDispBlock4} idx={RandomNumber(1, 10000)} />
       )}
     </Grid>
   );
